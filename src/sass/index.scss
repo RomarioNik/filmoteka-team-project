@@ -1,2 +1,23 @@
 @import './common';
-@import './example';
+@import './base/variables';
+@import './utils/mixins';
+@import './base/reset';
+@import './base/base';
+
+// header
+@import './layout/header';
+
+// sections
+@import './components/section-content';
+@import './components/section-pagination';
+
+// components
+
+// footer
+@import './layout/footer';
+
+// modals
+@import './components/modals/modal-movie';
+
+// visually-hidden
+@import './components/visually-hidden';
