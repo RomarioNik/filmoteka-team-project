@@ -1,1 +1,41 @@
-<header class="header">Header</header>
+<header class="header">
+  <div class="header_container">
+    <div class="header_wrap_top">
+      <nav class="nav">
+        <ul class="nav_list">
+          <li class="nav_item">
+            <a href=""><button class="btn_home btn">Home</button></a>
+          </li>
+          <li class="nav_item">
+            <a href=""><button class="btn_library btn">My Library</button></a>
+          </li>
+        </ul>
+      </nav>
+      <form class="search_form" action="#">
+        <input class="search_input" type="text" placeholder="Movie Search" />
+        <button class="search_btn">
+          <svg class="search_btn_icon" width="15" height="15">
+            <use href="./images/icons.svg#icon-search"></use>
+          </svg>
+        </button>
+      </form>
+    </div>
+    <!-- <p>Search result not successful. Enter the correct movie name.</p> -->
+    <div class="header_wrap_bottom">
+      <div class="logo_container">
+        <svg class="logo_icon" width="32" height="32">
+          <use href="./images/icons.svg#icon-logo-film"></use>
+        </svg>
+        <p class="logo_text">Filmoteka</p>
+      </div>
+      <ul class="watch_queue_list">
+        <li class="watch_queue_item">
+          <a href=""><button class="btn_watch btn">Watched</button></a>
+        </li>
+        <li class="watch_queue_item">
+          <a href=""><button class="btn_queue btn">Queue</button></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
