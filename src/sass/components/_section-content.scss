@@ -2,3 +2,121 @@
   //   height: 100px;
   //   flex: 1 1 auto;
 }
+
+.film__card{
+  width: 280px;
+}
+
+.film__img {
+  width: 100%;
+  height: 402px;
+  border-radius: 5px;
+}
+
+.film__name {
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 14px;
+text-transform: uppercase;
+
+color: #000000;
+}
+
+// .film__atribute {}
+
+.film__ganre,
+.film__year {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  text-transform: uppercase;
+  color: #B92F2C;
+  }
+
+// .film__year {}
+
+// .film__gallery {
+//   display: flex;
+//  justify-content:center;
+//    flex-wrap: wrap;  
+//   justify-content:center;
+  
+// }
+
+// .film__card {
+  
+//   max-width: 280px;
+//   padding: 20px;
+//   @media screen and (min-width: 768px) {
+//     width: 336px;
+//    padding: 10px;
+//   }
+//   @media screen and (min-width: 1200px) {
+//     width: 430px;
+//    }
+// }
+
+// .film__img {
+ 
+//   height: 402px;
+//    border-radius: 5px;
+//    margin-bottom: 10px;
+//    @media screen and (min-width: 768px) {
+//     height: 455px;
+//    }
+//    @media screen and (min-width: 1200px) {
+//     height: 574px;
+//    }
+// }
+
+// .film__name {
+// font-family: 'Roboto';
+// font-style: normal;
+// font-weight: 500;
+// font-size: 12px;
+// line-height: 14px;
+// text-transform: uppercase;
+// color: #000000;
+// margin-bottom: 5px;
+// @media screen and (min-width: 768px) {
+//   line-height: 16px;
+// }
+// @media screen and (min-width: 1200px) {
+//   font-size: 20px;
+// line-height: 24px;
+// }
+// }
+
+// .film__atribute {
+//   display: flex;
+// }
+
+// .film__ganre,
+// .film__year {
+// font-family: 'Roboto';
+// font-style: normal;
+// font-weight: 500;
+// font-size: 12px;
+// line-height: 14px;
+// text-transform: uppercase;
+// color: #B92F2C;
+// @media screen and (min-width: 768px) {
+//   line-height: 16px;
+// }
+// @media screen and (min-width: 1200px) {
+//   font-size: 20px;
+// line-height: 24px;
+// }
+// }
+
+// .film__year{
+//   border-left: 5px;
+//   border-color: #B92F2C;
+//   margin-left: 5px;
+//   padding-left: 5px;
+// }
+
