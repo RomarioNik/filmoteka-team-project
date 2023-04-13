@@ -82,12 +82,11 @@ export class ThemoviedbAPI {
 
 // Імпорт апі в свій js файл:
 // import { ThemoviedbAPI } from './js/themoviedb-api';
-// const themoviedbAPI = new ThemoviedbAPI();
-
 
 // Отримання масиву карток "в тренді"
-// Дивись також примітку стосовно жанрів, нижче в коментарях.
+// Якщо у відповіді приходять лише id жанрів, то щоб підставити замість них їх назви - додати після запиту функцію changeGenresIdToName(data)
 // async function renderMain() {
+  // const themoviedbAPI = new ThemoviedbAPI();
 //   try {
 //     const { data } = await themoviedbAPI.getTrending();
 //     console.log(data);
@@ -99,6 +98,7 @@ export class ThemoviedbAPI {
 // Пошук за ключовим словом:
 // async function handleSearchFormSubmit(event) {
 //   event.preventDefault();
+  // const themoviedbAPI = new ThemoviedbAPI();
 // const searchQuery = event.currentTarget.elements['searchQuery'].value;  // задати інпуту в розмітці нейм name="searchQuery"
 //   themoviedbAPI.query = searchQuery;
 //   themoviedbAPI.page = 1;
@@ -114,6 +114,7 @@ export class ThemoviedbAPI {
 // Отримання фільму за id (деталі по фільму)
 // async function renderMovieDetails(event) {
 //   event.preventDefault();
+  // const themoviedbAPI = new ThemoviedbAPI();
 //   const movie_id = 920; // тут необхідно отримати id фільму по кліку на картку фільму і поставити замість 920
 //   themoviedbAPI.movie_id = movie_id;
 
@@ -129,6 +130,7 @@ export class ThemoviedbAPI {
 // Отримання посилання на трейлер
 // async function getMovieTrailer(event) {
 //   event.preventDefault();
+  // const themoviedbAPI = new ThemoviedbAPI();
 //   const movie_id = 920; // тут необхідно отримати id фільму для пошуку по кліку на картку фільму і поставити замість 920
 //   themoviedbAPI.movie_id = movie_id;
 
@@ -138,35 +140,6 @@ export class ThemoviedbAPI {
 //     const key = data.results[0].key;
 //     const linkToVideo = `https://www.youtube.com/watch?v=${key}`;
 //     console.log(linkToVideo);
-//   } catch (err) {
-//     console.log(err);
-//   }
-// }
-
-// Якщо в розмітці мають бути зазначені жанри, то треба додати функцію заміни id жанрів на імена жанрів
-// Ось функція, яку треба додати для виконання заміни і отримання відповіді з підстановкою імен.
-// Функцію додавати після отримання відповіді з бекенду з картками, в яких є idжанрів.
-
-// changeGenresIdToName(movies);
-
-// і сама функція:
-// async function changeGenresIdToName(movies) {
-//   try {
-//     const genresListResponce = await themoviedbAPI.getGenres();
-//     const genresIdList = genresListResponce.data.genres;
-//     movies.results.forEach(element => {
-//       const array = element.genre_ids;
-//       if (!array) return 'Other';
-//       const genresNames = array.map(elem => {
-//         if (genresIdList.find(x => x.id === elem)) {
-//           return genresIdList.find(x => x.id === elem).name;
-//         } else {
-//           return 'Other';
-//         }
-//       });
-
-//       element.genre_ids = genresNames;
-//     });
 //   } catch (err) {
 //     console.log(err);
 //   }
