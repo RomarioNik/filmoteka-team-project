@@ -9,14 +9,23 @@
     justify-content: space-between;
     width: 280px;
     height: 460px;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 65.37%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 65.37%), url(../images/bg/bg-red-mob.jpg);
     border-radius: 10px;
     // transform: matrix(-1, 0, 0, 1, 0, 0);
     margin: 20px;
     @media screen and (min-width: 768px) {
+        display: flex;
+        flex-direction: row;
         width: 704px;
         height: 222px;
         border-radius: 15px;
+        margin: 32px;
+    }
+}
+.header_wrap_top {
+    @media screen and (min-width: 768px) {
+        display: flex;
+        align-items: flex-start;
     }
 }
 .btn_home {
@@ -107,10 +116,29 @@
     background: var(--btn-bg-main-color);
     cursor: pointer;
 }
+.nav {
+    @media screen and (min-width: 768px) {
+        display: flex;
+        order: 2;
+        
+    }
+}
 .nav_list {
     display: flex;  
     gap: 4px;
     padding: 14px 0 8px 14px;
+    @media screen and (min-width: 768px) {
+        padding: 0;
+        padding-top: 16px;
+        
+    }
+}
+.header_wrap_bottom {
+    @media screen and (min-width:768px) {
+        display: flex;
+        justify-content: space-between;
+
+    }
 }
 .search_form {
     display: flex;
@@ -118,17 +146,39 @@
     margin: 0 auto;
     width: 252px;
     height: 34px;
+    @media screen and (min-width:768px) {
+        width: 165px;
+        height: 38px;
+        
+    }
 }
 .search_input {
     width: 100%;
     border-radius: 999px 0 0 999px;
     border: none;
     outline: none;
-    padding: 10px 0 10px 14px;
     background: var(--btn-bg-main-color);
+    @media screen and (min-width: 768px) {
+        height: 100%;
+        align-self: start;
+        margin: 16px 0 0 16px;
+        
+    }
 }
 .search_input::placeholder {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.16;
     color: var(--text-color);
+    padding: 10px 0 10px 14px;
+    @media screen and (min-width: 768px) {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.14;
+        padding: 11px 0 11px 16px;
+       
+        
+    }
 }
 .search_btn {
     border-radius: 0 999px 999px 0;
@@ -136,12 +186,29 @@
     outline: none;
     padding: 10px 14px 10px 0;
     background: var(--btn-bg-main-color);
+    @media screen and (min-width: 768px) {
+        height: 100%;
+        margin: 16px 4px 0 0;
+        
+    }
+}
+.search_btn_icon {
+    @media screen and(min-width: 768px) {
+        margin-left: auto;
+        display: flex;
+        
+    }
 }
 .logo_container {
     display: flex;
     justify-content: center;
     gap: 8px;
     padding-bottom: 16px;
+    @media screen and (min-width: 768px) {
+        order: 3;
+        align-items: flex-end;
+        
+    }
 }
 
 .logo_text {
@@ -155,4 +222,15 @@
     gap: 4px;
     justify-content: center;
     padding-bottom: 24px;
+    @media screen and(min-width: 768px) {
+        display: flex;
+        // order: 1;
+        
+    }
 }
+// .watch_queue_item {
+//     display: flex;
+//     // order: 1;
+// }
+
+
