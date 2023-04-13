@@ -66,12 +66,25 @@ export class ThemoviedbAPI {
       throw new Error(err.message);
     }
   }
+
+  async getGenres() {
+    try {
+      return await axios.get(`${this.#BASE_URL}/genre/movie/list`, {
+        params: {
+          api_key: this.#API_KEY,
+        },
+      });
+    } catch (err) {
+      throw new Error(err.message);
+    }
+  }
 }
 
 // Імпорт апі в свій js файл:
 // import { ThemoviedbAPI } from './js/themoviedb-api';
 
 // Отримання масиву карток "в тренді"
+// Дивись також примітку стосовно жанрів, нижче в коментарях.
 // async function renderMain() {
 //   try {
 //     const { data } = await themoviedbAPI.getTrending();
@@ -123,6 +136,35 @@ export class ThemoviedbAPI {
 //     const key = data.results[0].key;
 //     const linkToVideo = `https://www.youtube.com/watch?v=${key}`;
 //     console.log(linkToVideo);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// }
+
+// Якщо в розмітці мають бути зазначені жанри, то треба додати функцію заміни id жанрів на імена жанрів
+// Ось функція, яку треба додати для виконання заміни і отримання відповіді з підстановкою імен.
+// Функцію додавати після отримання відповіді з бекенду з картками, в яких є idжанрів.
+
+// changeGenresIdToName(movies);
+
+// і сама функція:
+// async function changeGenresIdToName(movies) {
+//   try {
+//     const genresListResponce = await themoviedbAPI.getGenres();
+//     const genresIdList = genresListResponce.data.genres;
+//     movies.results.forEach(element => {
+//       const array = element.genre_ids;
+//       if (!array) return 'Other';
+//       const genresNames = array.map(elem => {
+//         if (genresIdList.find(x => x.id === elem)) {
+//           return genresIdList.find(x => x.id === elem).name;
+//         } else {
+//           return 'Other';
+//         }
+//       });
+
+//       element.genre_ids = genresNames;
+//     });
 //   } catch (err) {
 //     console.log(err);
 //   }
