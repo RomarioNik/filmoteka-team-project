@@ -17,8 +17,12 @@
 }
 
 .film__card{
+  list-style-type: none;
   margin: 0;
   width: 280px;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+  1px 4px 6px rgba(0, 0, 0, 0.16);
+  border-radius: 5px;
     @media screen and (min-width: 768px) {
     width: 336px;
     }
@@ -47,6 +51,7 @@ font-weight: 500;
 font-size: 12px;
 line-height: 1,1667;
 text-transform: uppercase;
+padding-left: 10px;
 margin-top: 10px;
 margin-bottom: 8px;
 color: #000000;
@@ -65,6 +70,7 @@ color: #000000;
 
 .film__atribute {
   display: flex;
+  padding-left: 10px;
   margin-bottom: 20px;
   @media screen and (min-width: 768px) {
   margin-bottom: 24;

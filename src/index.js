@@ -4,12 +4,10 @@ import createFilmsCard from './templates/gallery-card.hbs';
 
 
 const  themoviedbAPI = new ThemoviedbAPI;
-
 const galleryListEl = document.querySelector('.film__gallery');
 
 
-// Отримання масиву карток "в тренді"
-// Дивись також примітку стосовно жанрів, нижче в коментарях.
+
 async function renderMain() {
   try {
     const { data } = await themoviedbAPI.getTrending();
@@ -18,10 +16,13 @@ async function renderMain() {
 
     galleryListEl.innerHTML = createFilmsCard(data.results)
   } catch (err) {
-    console.log(err);
+    console.log(err);    
   }
 }
-renderMain()
+ renderMain()
+
+ 
+   
 
 
 // async function changeGenresIdToName(movies) {
@@ -44,4 +45,5 @@ renderMain()
 //       } catch (err) {
 //         console.log(err);
 //       }
-//     }
+//     }    
+// changeGenresIdToName(movies);
