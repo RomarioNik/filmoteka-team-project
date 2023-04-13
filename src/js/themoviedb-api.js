@@ -82,6 +82,8 @@ export class ThemoviedbAPI {
 
 // Імпорт апі в свій js файл:
 // import { ThemoviedbAPI } from './js/themoviedb-api';
+// const themoviedbAPI = new ThemoviedbAPI();
+
 
 // Отримання масиву карток "в тренді"
 // Дивись також примітку стосовно жанрів, нижче в коментарях.
