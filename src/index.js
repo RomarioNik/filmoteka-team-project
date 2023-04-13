@@ -1,9 +1,11 @@
 
 import { ThemoviedbAPI } from './js/themoviedb-api';
+import createFilmsCard from './templates/gallery-card.hbs';
+
 
 const  themoviedbAPI = new ThemoviedbAPI;
 
-const gallaryListEl = document.querySelector('film__gallery');
+const galleryListEl = document.querySelector('.film__gallery');
 
 
 // Отримання масиву карток "в тренді"
@@ -11,12 +13,17 @@ const gallaryListEl = document.querySelector('film__gallery');
 async function renderMain() {
   try {
     const { data } = await themoviedbAPI.getTrending();
-    console.log(data);
+
+    console.log(data.results);
+
+    galleryListEl.innerHTML = createFilmsCard(data.results)
   } catch (err) {
     console.log(err);
   }
 }
 renderMain()
+
+
 // async function changeGenresIdToName(movies) {
 //       try {
 //         const genresListResponce = await themoviedbAPI.getGenres();

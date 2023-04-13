@@ -1,1 +1,0 @@
-// import {hemoviedbAPI} from './themoviedb-api'
