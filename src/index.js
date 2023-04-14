@@ -1,6 +1,8 @@
-
 import { ThemoviedbAPI } from './js/themoviedb-api';
 import createFilmsCard from './templates/gallery-card.hbs';
+import { renderTrending } from './js/render-trending';
+
+renderTrending();
 
 
 const  themoviedbAPI = new ThemoviedbAPI;
