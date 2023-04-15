@@ -1,6 +1,6 @@
 // находим нужные теги
-export default refsEl = () => {
+export default function refsEl() {
   return {
     btnTestEl: document.querySelector('.button-test-enter'),
   };
-};
+}
