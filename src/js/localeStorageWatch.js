@@ -1,5 +1,5 @@
 let watchedHistory = []
-export function localeSettingsWatch (film , link) {
-    watchedHistory.push(film)
-localStorage.setItem(film , link)
+export function localeSettingsWatch (link) {
+    watchedHistory.push(link)
+localStorage.setItem('historyWatched', watchedHistory)
 }
