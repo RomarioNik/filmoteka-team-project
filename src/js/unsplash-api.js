@@ -3,6 +3,8 @@ import axios from 'axios';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 
+import { ThemoviedbAPI } from './themoviedb-api';
+
 export class UnsplashAPI {
     const options = {
         totalItems: 1000,    
