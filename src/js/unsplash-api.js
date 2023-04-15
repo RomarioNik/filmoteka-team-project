@@ -10,4 +10,6 @@ export class UnsplashAPI {
         visiblePages: 20,
         page: 1
     }
+
+    query = null;
 }
