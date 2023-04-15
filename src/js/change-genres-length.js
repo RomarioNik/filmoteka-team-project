@@ -30,6 +30,3 @@ export async function changeGenresLength(movies) {
     console.log(err);
   }
 }
-
-
->>>>>>> Stashed changes
