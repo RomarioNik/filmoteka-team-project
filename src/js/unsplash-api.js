@@ -15,5 +15,7 @@ export class UnsplashAPI {
 
     query = null;
 
-    page = this.options.page
+    page = this.options.page;
+
+    const pagination = new Pagination('pagination', options);
 }
