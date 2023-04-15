@@ -17,7 +17,11 @@
 @import './layout/footer';
 
 // modals
+@import './components/modals/base-settings';
+@import './components/modals/modal-login';
 @import './components/modals/modal-movie';
+@import './components/modals/modal-students';
 
 // visually-hidden
 @import './components/visually-hidden';
+@import'./utils/btn-up';
