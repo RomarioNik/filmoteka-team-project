@@ -1,6 +1,7 @@
 import * as BasicLightBox from 'basiclightbox';
 import { ThemoviedbAPI } from './themoviedb-api';
 
+const instance = BasicLightBox.create(`<div class="modal-movie"></div>`);
 const liEl = document.querySelector('.card-list__item');
 const modalEl = document.querySelector('.modal-movie');
 const api = new ThemoviedbAPI();
@@ -11,8 +12,13 @@ export const hendlerClickCard = evt => {
     return;
   }
   // открывает модальное окно!
-  const instance = BasicLightBox.create(`<div class="modal-movie"></div>`);
+  const instance = BasicLightBox.create('<div class="modal-movie"></div>');
   instance.show();
+  api.movie_id = 920;
+  api
+    .getMovieDetails()
+    .then(({ data }) => {})
+    .catch(err => console.warn(err));
 };
 // создает разметку модалки и вызывается в экземпляре BasicLightBox
 function createModalWindow(data) {
@@ -35,14 +41,3 @@ function createModalWindow(data) {
 }
 
 liEl.addEventListener('click', hendlerClickCard);
-
-function getMovieId(id) {
-  api.movie_id = id;
-  api
-    .getMovieDetails()
-    .then(({ data }) => {
-      console.log(createModalWindow(data));
-    })
-    .catch(err => console.warn(err));
-}
-getMovieId(920);
