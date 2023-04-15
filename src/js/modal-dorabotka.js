@@ -1,20 +1,21 @@
 import { ThemoviedbAPI } from './themoviedb-api'
 export function ulAdd (event) {
 if (event.target.nodeName !== 'UL') {
-const idLi = event.target.dataset.id
+let idLi = event.target.dataset.id
+idLi = idLi.substring(1);
 console.log(idLi);
-// async function renderMovieDetails(newId) {
-//     const themoviedbAPI = new ThemoviedbAPI();
-//       themoviedbAPI.movie_id = newId;
-//       try {
-//         const { data } = await themoviedbAPI.getMovieVideos();
-//         console.log(data);
+async function renderMovieDetails(newId) {
+    const themoviedbAPI = new ThemoviedbAPI();
+      themoviedbAPI.movie_id = newId;
+      try {
+        const { data } = await themoviedbAPI.getMovieVideos();
+        console.log(data);
     
-//       } catch (err) {
-//         console.log(err);
-//       }
-//     }
-//     renderMovieDetails(idLi)
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    renderMovieDetails(idLi)
 }
 return
 }
