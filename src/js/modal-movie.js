@@ -23,11 +23,11 @@ function createModalWindow(data) {
   <p>genres<b></b></p>
   </div>
   <h3 class="modal-movie__about">About</h3>
-  <p>${data.overview}</p>
- 
+  <p class="modal-movie__desc">${data.overview}</p>
+ <div class="modal-movie__btn-wrap">
   <button type="button" class="modal-movie__Watch">add to Watched</button>
   <button type="button" class="modal-movie__queue">add to queue</button>
-  
+  </div>
   
   `;
 }
