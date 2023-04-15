@@ -1,6 +1,71 @@
+.basicLightbox--visible {
+  opacity: 1;
+}
 .modal-movie {
   width: 280px;
-  min-height: 500px;
+  height: 500px;
   padding: 20px;
   background-color: #fff;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.modal-movie::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.modal-movie__img {
+  display: block;
+  width: 240px;
+  height: 357px;
+
+  margin-bottom: 20px;
+}
+.modal-movie__title {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: calc(23 / 20);
+  text-transform: uppercase;
+
+  color: #000000;
+
+  margin-bottom: 20px;
+}
+.modal-movie__wrap-text {
+  margin-bottom: 20px;
+}
+.modal-movie__about {
+  text-transform: uppercase;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: calc(16 / 12);
+
+  margin-bottom: 8px;
+}
+.modal-movie__Watch {
+  padding: 10px 12px;
+  text-transform: uppercase;
+  background-color: transparent;
+  border: 1px solid #000000;
+  border-radius: 100px;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: calc(14 / 12);
+
+  color: #b92f2c;
+}
+.modal-movie__queue {
+  padding: 10px 10px;
+  text-transform: uppercase;
+  background-color: transparent;
+  border: 1px solid #000000;
+  border-radius: 100px;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: calc(14 / 12);
+
+  color: #b92f2c;
 }
