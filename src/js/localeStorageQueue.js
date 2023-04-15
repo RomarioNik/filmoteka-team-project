@@ -1,5 +1,5 @@
-let quequeHistory = []
-export function localeSettingQueue (film,link) {
-    quequeHistory.push(film)
-    localStorage.setItem(film , links)
-}
+let quequeHistory = [];
+export function localeSettingQueue (link) {
+    quequeHistory.push(link)
+    localStorage.setItem('historyQueue', quequeHistory)
+}     
