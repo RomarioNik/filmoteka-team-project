@@ -6,15 +6,14 @@
 .film__gallery {
   @media screen and (min-width: 768px) {
     display: flex;
-    // justify-content:center;
-    flex-wrap: wrap;
+        flex-wrap: wrap;
     gap: 20px;  
     }
     @media screen and (min-width: 1200px){
+      min-width: 1200px;
       gap: 15px
     }
-  // justify-content:center;
-}
+  }
 
 .film__card{
   list-style-type: none;
@@ -72,9 +71,10 @@ color: #000000;
 .film__atribute {
   display: flex;
   padding-left: 10px;
-  margin-bottom: 20px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
   @media screen and (min-width: 768px) {
-  margin-bottom: 24;
+  margin-bottom: 14;
   }
 }
 
@@ -85,7 +85,6 @@ color: #000000;
   font-weight: 500;
   font-size: 12px;
   line-height: 1,1667px;
-  // text-transform: uppercase;
   color: #B92F2C;
   @media screen and (min-width: 768px) {
     line-height: 16px;
@@ -99,6 +98,6 @@ color: #000000;
 .film__year {
   margin-left: 5px;
   padding-left: 5px;
-  border-left: 1px solid #B92F2C;
+  border-left: 2px solid #B92F2C;
 }
 

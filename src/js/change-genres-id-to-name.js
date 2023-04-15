@@ -17,7 +17,7 @@ export async function changeGenresIdToName(movies) {
       });
 
       element.genre_ids = genresNames;
-    });
+     });
   } catch (err) {
     console.log(err);
   }

@@ -1,47 +1,22 @@
-
-import { ThemoviedbAPI } from './themoviedb-api';
 import { changeGenresIdToName } from './change-genres-id-to-name';
 
-
-
-
-
-
-
-
 export async function changeGenresLength(movies) {
-const themoviedbAPI = new ThemoviedbAPI();
-   
-  try {
-    await changeGenresIdToName(movies);
-  const genresResponce = await themoviedbAPI.getGenres();
-  //console.log(genresResponce);
-  const genresIdList = genresResponce.data.genres;
-  //console.log(genresIdList);
-  //const genresName = 
+  await changeGenresIdToName(movies);
+  try {   
   movies.results.forEach(element => {
+    const arrayFullGemres = element.genre_ids;
     const maxLength = 2;
-    const array = element.genre_ids;
-    
-    //console.log(array);
-    if (array.length > maxLength) {
-      let newArray = array.slice(0, 2);      
-     
-      newArray.push('Other')
-      console.log(newArray);
-      const genresLongNames = newArray.join(', ');
-      console.log(genresLongNames);
-      return genresLongNames
-      
-    } else {
-      console.log(array);
-      const genresShotNanes= array.join(', ')
-      console.log(genresShotNanes)
-      return genresShotNanes;
+    let stringGanres = ''
+
+    if (arrayFullGemres.length > maxLength){
+      stringGanres = arrayFullGemres
+      .slice(0, 2)
+      .join(', ') + ', Other';   
+    } else { stringGanres = arrayFullGemres.join(', ')
     }
+element.genre_ids = stringGanres
   })
-     
-  } catch (err) {
+    } catch (err) {
     console.log(err);
   }
 }
