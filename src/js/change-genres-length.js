@@ -17,8 +17,7 @@ export async function changeGenresLength(movies) {
     
     //console.log(array);
     if (array.length > maxLength) {
-      let newArray = array.slice(0, 2);
-      
+      let newArray = array.slice(0, 2);      
       console.log(newArray);
       return newArray.push('Other')
     } else {

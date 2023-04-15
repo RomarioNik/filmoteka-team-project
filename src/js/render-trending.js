@@ -11,7 +11,7 @@ export async function renderTrending() {
   themoviedbAPI.page = 1; // змінювати пагінацією
   try {
     const { data } = await themoviedbAPI.getTrending();
-    await changeGenresLength(data);
+    // await changeGenresLength(data);
     await changeGenresIdToName(data);    
 
     galleryListEl.innerHTML = createFilmsCard(data.results);
