@@ -12,4 +12,6 @@ export class UnsplashAPI {
     }
 
     query = null;
+
+    page = this.options.page
 }
