@@ -1,7 +1,7 @@
 import { firebase } from './js/firebase/firebase';
 import { renderTrending } from './js/render-trending';
 import {ulAdd} from './js/modal-dorabotka';
-
+import {} from'./js/Btn-up';
 renderTrending();
 const ulHtml = document.querySelector('.film__gallery');
 console.log(ulHtml)
