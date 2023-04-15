@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-import Pagination from 'tui-pagination';
+import Pagination from 'tui-pagination.js';
 import 'tui-pagination/dist/tui-pagination.css';
 
 import { ThemoviedbAPI } from './themoviedb-api';
 
 export class UnsplashAPI {
-    const options = {
+    options = {
         totalItems: 1000,    
         itemsPerPage: 20,
         visiblePages: 20,
@@ -17,5 +17,5 @@ export class UnsplashAPI {
 
     page = this.options.page;
 
-    const pagination = new Pagination('pagination', options);
+    pagination = new Pagination('pagination', this.options);
 }
