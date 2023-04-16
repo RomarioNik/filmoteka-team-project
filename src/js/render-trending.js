@@ -12,6 +12,7 @@ const galleryListEl = document.querySelector('.film__gallery');
 
 export async function renderTrending(paginationPage = 1) {
   const themoviedbAPI = new ThemoviedbAPI();
+  console.log(paginationPage);
   themoviedbAPI.page = paginationPage; // змінювати пагінацією
   try {
     const { data } = await themoviedbAPI.getTrending();

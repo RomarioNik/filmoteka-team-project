@@ -25,12 +25,15 @@
 .login__welcome {
   display: flex;
   flex-direction: column;
+  font-size: 18px;
 }
 
 .login__hello {
+  text-align: center;
 }
 
 .login__name {
+  text-align: center;
 }
 
 .login__warning {
@@ -54,4 +57,5 @@
 .login__btn-reg,
 .login__btn-signout {
   padding: 14px 32px;
+  font-weight: 500;
 }
