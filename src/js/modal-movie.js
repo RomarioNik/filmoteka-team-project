@@ -45,17 +45,18 @@ X
   `;
 }
 
-function getDateFromId(id) {
+async function getDateFromId(id) {
   const api = new ThemoviedbAPI();
   const modalEl = document.querySelector('.modal-movie');
   api.movie_id = id;
-  api
-    .getMovieDetails()
-    .then(({ data }) => {
-      console.log(modalEl);
-      modalEl.insertAdjacentHTML('afterbegin', createModalWindow(data));
-    })
-    .catch(err => console.warn(err));
+
+  try {
+    const { data } = await api.getMovieDetails();
+    console.log(modalEl);
+    modalEl.insertAdjacentHTML('afterbegin', createModalWindow(data));
+  } catch {
+    err => console.warn(err);
+  }
 }
 
 function modalIsOpen(ids) {
