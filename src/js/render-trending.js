@@ -10,9 +10,9 @@ import createFilmsCard from '../templates/gallery-card.hbs';
 
 const galleryListEl = document.querySelector('.film__gallery');
 
-export async function renderTrending() {
+export async function renderTrending(paginationPage = 1) {
   const themoviedbAPI = new ThemoviedbAPI();
-  themoviedbAPI.page = 1; // змінювати пагінацією
+  themoviedbAPI.page = paginationPage; // змінювати пагінацією
   try {
     const { data } = await themoviedbAPI.getTrending();
     await filmNaneLength(data);
