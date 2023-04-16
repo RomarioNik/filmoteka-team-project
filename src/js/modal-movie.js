@@ -1,6 +1,6 @@
 import * as BasicLightBox from 'basiclightbox';
 import { ThemoviedbAPI } from './themoviedb-api';
-const liEl = document.querySelector('.card-list__item');
+const liEl = document.querySelector('.film__card');
 
 export const hendlerClickCard = evt => {
   // проверяю, клик по карточке или нет.
@@ -13,14 +13,27 @@ export const hendlerClickCard = evt => {
 // создает разметку модалки и вызывается в экземпляре BasicLightBox
 function createModalWindow(data) {
   return `
-  
-  <img src="https://image.tmdb.org/t/p/w400${data.poster_path}" class="modal-movie__img" alt="${data.original_title}" />
+<svg class="modal-movie__btn-close" width="10" height="10">
+  <use href="./images/icons.svg#icon-close"></use>
+</svg>
+
+  <img src="https://image.tmdb.org/t/p/w400${
+    data.poster_path
+  }" class="modal-movie__img" alt="${data.original_title}" />
   <h2 class="modal-movie__title">${data.original_title}</h2>
-  <div class="modal-movie__wrap-text">
-  <p>Vote/Votes<b>${data.vote_average} / ${data.vote_count}</b></p>
-  <p>popularity<b>${data.popularity}</b></p>
-  <p>original_title<b>${data.original_title}</b></p>
-  <p>genres<b></b></p>
+  <div class="modal-movie__wrap">
+    <div class="modal-movie__wrap-key">
+    <p>Vote/Votes</p>
+    <p>popularity</p>
+    <p>original_title</p>
+    <p>genres</p>
+     </div>
+     <div class="modal-movie__wrap-value">
+    <p><span>${data.vote_average.toFixed(1)}</span> / ${data.vote_count}</p>
+    <p>${data.popularity.toFixed(1)}</p>
+    <p>${data.original_title}</p>
+    <p></p>
+   </div>
   </div>
   <h3 class="modal-movie__about">About</h3>
   <p class="modal-movie__desc">${data.overview}</p>
