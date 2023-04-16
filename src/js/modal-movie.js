@@ -1,21 +1,21 @@
 import * as BasicLightBox from 'basiclightbox';
 import { ThemoviedbAPI } from './themoviedb-api';
-const liEl = document.querySelector('.film__card');
-
-export const hendlerClickCard = evt => {
+import { ulAdd } from './modal-dorabotka';
+ const ulEll = document.querySelector('.film__gallery')
+export const hendlerClickCard = event => {
   // проверяю, клик по карточке или нет.
-  if (evt.currentTarget.nodeName != 'LI') {
-    return;
-  }
-  modalIsOpen();
-  // открывает модальное окно!
+  if (event.target.nodeName !== 'UL') {
+    let idLi = event.target.dataset.id
+    modalIsOpen(idLi);
+    }
+  // открывает модальное окно
 };
 // создает разметку модалки и вызывается в экземпляре BasicLightBox
 function createModalWindow(data) {
   return `
-<svg class="modal-movie__btn-close" width="10" height="10">
-  <use href="./images/icons.svg#icon-close"></use>
-</svg>
+  <button class="close-button-modal" type='button' width="20" height="20 font-size="20">
+X
+</button>
 
   <img src="https://image.tmdb.org/t/p/w400${
     data.poster_path
@@ -58,10 +58,9 @@ function getDateFromId(id) {
     .catch(err => console.warn(err));
 }
 
-function modalIsOpen() {
+function modalIsOpen(ids) {
   const instance = BasicLightBox.create('<div class="modal-movie"></div>');
   instance.show();
-
-  getDateFromId(920);
+  getDateFromId(ids);
 }
-// liEl.addEventListener('click', hendlerClickCard);
+ulEll.addEventListener('click', hendlerClickCard);

@@ -14,10 +14,6 @@ import { handleLoadNextPaginationPage } from './js/unsplash-api';
 const btnPagination = document.querySelector('.tui-pagination');
 
 btnPagination.addEventListener('click', handleLoadNextPaginationPage);
-const ulHtml = document.querySelector('.film__gallery');
-
-console.log(ulHtml);
-ulHtml.addEventListener('click', ulAdd);
 firebase();
 
 const searchFormElement = document.querySelector('.js_header_search_form');
