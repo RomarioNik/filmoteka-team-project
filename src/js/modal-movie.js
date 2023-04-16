@@ -38,8 +38,12 @@ X
   <h3 class="modal-movie__about">About</h3> 
   <p class="modal-movie__desc">${data.overview}</p> 
  <div class="modal-movie__btn-wrap"> 
-  <button type="button" class="modal-movie__Watch">add to Watched</button> 
-  <button type="button" class="modal-movie__queue">add to queue</button> 
+  <button type="button" class="modal-movie__Watch" data-id=${
+    data.id
+  }>add to Watched</button> 
+  <button type="button" class="modal-movie__queue" data-id=${
+    data.id
+  }>add to queue</button> 
   </div> 
    
   `;
@@ -52,7 +56,7 @@ async function getDateFromId(id) {
 
   try {
     const { data } = await api.getMovieDetails();
-    console.log(modalEl);
+    console.log(data);
     modalEl.insertAdjacentHTML('afterbegin', createModalWindow(data));
   } catch {
     err => console.warn(err);
