@@ -1,5 +1,5 @@
 <header class="header">
-  <div class="header_container">
+  <div class="header_container container">
     <div class="header_wrap_top">
       <nav class="nav">
         <ul class="nav_list">
@@ -11,8 +11,13 @@
           </li>
         </ul>
       </nav>
-      <form class="search_form" action="#">
-        <input class="search_input" type="text" placeholder="Movie Search" />
+      <form class="search_form js_header_search_form" action="#">
+        <input
+          class="search_input"
+          name="searchQuery"
+          type="text"
+          placeholder="Movie Search"
+        />
         <button class="search_btn">
           <svg class="search_btn_icon" width="15" height="15">
             <use href="./images/icons.svg#icon-search"></use>
@@ -20,7 +25,7 @@
         </button>
       </form>
     </div>
-    <!-- <p>Search result not successful. Enter the correct movie name.</p> -->
+    <p class="js_error_search">Search result not successful. Enter the correct movie name.</p>
     <div class="header_wrap_bottom">
       <div class="logo_container">
         <svg class="logo_icon">

@@ -1,7 +1,4 @@
 {{#each this}}
-<<<<<<< Updated upstream
-=======
-
   <li class='film__card' data-id={{this.id}}>
     <img class='film__img' src={{this.poster_path}} alt='' data-id={{this.id}} />
     <h2 class='film__name' data-id={{this.id}}>{{this.original_title}}</h2>
@@ -11,17 +8,3 @@
     </div>
   </li>
 {{/each}}
-
-{{! old version }}
-{{!-- {{#each this}}
-
->>>>>>> Stashed changes
-<li class="film__card" data-id = ${{this.id}}>        
-        <img class="film__img" src="https://image.tmdb.org/t/p/w500{{this.poster_path}}" alt="" data-id = ${{this.id}}  />
-        <p class="film__name" data-id = ${{this.id}}>{{this.original_title}} </p>
-            <div class="film__atribute">
-                 <p class="film__ganre" data-id = ${{this.id}}>{{this.genre_ids}}</p>
-                <p class="film__year" data-id = ${{this.id}}>{{this.release_date}}</p>
-            </div>
-    </li>
-    {{/each}}
