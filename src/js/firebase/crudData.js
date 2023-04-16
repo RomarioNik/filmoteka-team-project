@@ -1,13 +1,5 @@
-import { auth } from './js/firebase/auth/getAuth.js';
-import {
-  getDatabase,
-  ref,
-  set,
-  get,
-  update,
-  remove,
-  child,
-} from 'firebase/database';
+import { auth } from './auth/getAuth';
+import { getDatabase, ref, get, update, child } from 'firebase/database';
 import { onAuthStateChanged } from 'firebase/auth';
 
 // object is on the server
@@ -44,16 +36,22 @@ function writeUserData(id, nameButton) {
             return;
           }
 
-          // если в объекте есть нужное свойство
-          if (nameButton in data) {
-            data[nameButton].push(id);
+          // если в объекте нет нужного свойства
+          if (!nameButton in data) {
+            const arr = [id];
+            data[nameButton] = arr;
             updateData(data);
             return;
           }
 
-          // если в объекте нет нужного свойства
-          const arr = [id];
-          data[nameButton] = arr;
+          // проверяем, если ли id в массиве
+          const isNumber = data[nameButton].some(el => el === id);
+          if (isNumber) {
+            return;
+          }
+
+          // если в объекте есть нужное свойство
+          data[nameButton].push(id);
           updateData(data);
 
           // перезаписываем объект на сервере
@@ -76,7 +74,8 @@ function writeUserData(id, nameButton) {
       });
   });
 }
-// writeUserData(594767, 'watched');
+
+// writeUserData(594768, 'watched');
 
 function readUserData() {
   // проверяем вошел ли пользователь
