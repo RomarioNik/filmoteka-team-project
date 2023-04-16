@@ -9,7 +9,18 @@ export const handleClickTestBtn = () => {
   const instance = basicLightbox.create(
     `
   <div class="modal-login">
+
+    <button class="search_btn">
+    <svg class="search_btn_icon" width="15" height="15">
+      <use href="./images/icons.svg#icon-search"></use>
+    </svg>
+  </button>
+  
     <form class="login">
+      <p class="login__welcome">
+        <span class="login__hello">Hello,</span>
+        <span class="login__name"></span>
+      </p>
       <input
         class="login__email"
         type="email"
