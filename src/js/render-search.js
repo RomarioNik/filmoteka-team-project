@@ -10,12 +10,12 @@ import createFilmsCard from '../templates/gallery-card.hbs';
 
 const galleryListEl = document.querySelector('.film__gallery');
 
-export async function renderSearch(event) {
+export async function renderSearch(event, paginationPage = 1) {
   event.preventDefault();
   const themoviedbAPI = new ThemoviedbAPI();
   themoviedbAPI.query =
     event.currentTarget.elements['searchQuery'].value.trim();
-  themoviedbAPI.page = 1; // змінювати пагінацією
+  themoviedbAPI.page = paginationPage; // змінювати пагінацією
   try {
     const { data } = await themoviedbAPI.searchMovies();
     await filmNaneLength(data);
