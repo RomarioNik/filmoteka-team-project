@@ -5,9 +5,10 @@ import { renderTrending } from './render-trending';
 const options = {
   totalItems: 1000,
   itemsPerPage: 20,
-  visiblePages: 20,
+  visiblePages: 5,
   page: 1,
 };
+
 const pagination = new Pagination('pagination', options);
 
 export function handleLoadNextPaginationPage() {
