@@ -2,34 +2,26 @@ import * as BasicLightBox from 'basiclightbox';
 import { ThemoviedbAPI } from './themoviedb-api';
 import createModalMovie from '../templates/modal-movie.hbs';
 
-
-//const liEl = document.querySelector('.film__card');
-const ullEl = document.querySelector('.film__gallery');
-const modalRender  = document.querySelector('.modal__container');
-
+// const liEl = document.querySelector('.film__card');
+// const ullEl = document.querySelector('.film__gallery');
+// const modalRender = document.querySelector('.modal__container');
 
 export const hendlerClickCard = evt => {
   // проверяю, клик по карточке или нет.
-  // 
+  // if (evt.currentTarget.nodeName != 'LI') {
+  //   return;
+  // }
 
   modalIsOpen();
   // открывает модальное окно!
 };
 // создает разметку модалки и вызывается в экземпляре BasicLightBox
 
-async function createModalWindow(data) {
-  const themoviedbAPI = new ThemoviedbAPI();
-  try {
-  const { data } = await themoviedbAPI.getTrending();
-  modalRender.innerHTML = createModalMovie(data.results);
-} catch (err) {
-  console.log(err);
-}
-  //   return `
+// function createModalWindow(data) {
+//   return `
 // <svg class="modal-movie__btn-close" width="10" height="10">
 //   <use href="./images/icons.svg#icon-close"></use>
 // </svg>
-
 //   <img src="https://image.tmdb.org/t/p/w400${
 //     data.poster_path
 //   }" class="modal-movie__img" alt="${data.original_title}" />
@@ -54,9 +46,9 @@ async function createModalWindow(data) {
 //   <button type="button" class="modal-movie__Watch">add to Watched</button>
 //   <button type="button" class="modal-movie__queue">add to queue</button>
 //   </div>
-  
+
 //   `;
-}
+// }
 
 function getDateFromId(id) {
   const api = new ThemoviedbAPI();
@@ -70,8 +62,6 @@ function getDateFromId(id) {
     })
     .catch(err => console.warn(err));
 }
-
-
 
 function modalIsOpen() {
   const instance = BasicLightBox.create('<div class="modal-movie"></div>');
