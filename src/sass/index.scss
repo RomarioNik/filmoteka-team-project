@@ -8,6 +8,7 @@
 @import './layout/header';
 
 // sections
+@import './components/preloader';
 @import './components/section-content';
 @import './components/section-pagination';
 
@@ -17,7 +18,12 @@
 @import './layout/footer';
 
 // modals
+@import './components/modals/base-settings';
+@import './components/modals/modal-login';
 @import './components/modals/modal-movie';
+@import '../../node_modules/basiclightbox/dist/basicLightbox.min.css';
+@import './components/modals/modal-students';
 
 // visually-hidden
 @import './components/visually-hidden';
+@import './utils/btn-up';
