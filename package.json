@@ -18,7 +18,6 @@
     "url": "https://github.com/RomarioNik/filmoteka-team-project/issues"
   },
   "dependencies": {
-    "@parcel/package-manager": "^2.6.0",
     "axios": "^1.3.5",
     "basiclightbox": "^5.0.4",
     "firebase": "^9.19.1",
