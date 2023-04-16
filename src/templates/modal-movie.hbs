@@ -1,0 +1,29 @@
+{{#each}}
+<button>
+<svg class="modal-movie__btn-close" width="10" height="10">
+  <use href="./images/icons.svg#icon-close"></use>
+</svg>
+</button>
+  <img src="https://image.tmdb.org/t/p/w400${{this.poster_path}}" class="modal-movie__img" alt="{{this.original_title}}" />
+  <h2 class="modal-movie__title">{{this.original_title}}</h2>
+  <div class="modal-movie__wrap">
+    <div class="modal-movie__wrap-key">
+    <p>Vote/Votes</p>
+    <p>popularity</p>
+    <p>original_title</p>
+    <p>genres</p>
+     </div>
+     <div class="modal-movie__wrap-value">
+    <p><span>{{this.vote_average}}.toFixed(1)</span> / {{this.vote_count}}</p>
+    <p>{{this.popularity}}.toFixed(1)</p>
+    <p>{{this.original_title}}</p>
+    <p></p>
+   </div>
+  </div>
+  <h3 class="modal-movie__about">About</h3>
+  <p class="modal-movie__desc">{{data.overview}}</p>
+ <div class="modal-movie__btn-wrap">
+  <button type="button" class="modal-movie__Watch">add to Watched</button>
+  <button type="button" class="modal-movie__queue">add to queue</button>
+  </div>
+  {{/each}}
