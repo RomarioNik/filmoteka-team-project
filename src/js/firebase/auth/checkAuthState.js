@@ -5,23 +5,23 @@ import { auth } from './getAuth';
 export const checkAuthState = () => {
   onAuthStateChanged(auth, user => {
     if (user !== null) {
-      document.querySelector('.watch_queue_list').style.display = 'flex';
-      document.querySelector('.login__welcome').style.display = 'flex';
-      document.querySelector('.login__name').innerHTML = createNameUser(
-        user.email
-      );
-      document.querySelector('.login__btn-wrap').style.display = 'none';
-      document.querySelector('.login__btn-signout').style.display = 'block';
-      document.querySelector('.login__email').style.display = 'none';
-      document.querySelector('.login__password').style.display = 'none';
+      // document.querySelector('.watch_queue_list').style.display = 'flex';
+      // document.querySelector('.login__welcome').style.display = 'flex';
+      // document.querySelector('.login__name').innerHTML = createNameUser(
+      //   user.email
+      // );
+      // document.querySelector('.login__btn-wrap').style.display = 'none';
+      // document.querySelector('.login__btn-signout').style.display = 'block';
+      // document.querySelector('.login__email').style.display = 'none';
+      // document.querySelector('.login__password').style.display = 'none';
       //   alert('You have logged in');
     } else {
-      document.querySelector('.login__welcome').style.display = 'none';
-      document.querySelector('.login__btn-wrap').style.display = 'block';
-      document.querySelector('.login__btn-signout').style.display = 'none';
-      document.querySelector('.watch_queue_list').style.display = 'none';
-      document.querySelector('.login__email').style.display = 'block';
-      document.querySelector('.login__password').style.display = 'block';
+      // document.querySelector('.login__welcome').style.display = 'none';
+      // document.querySelector('.login__btn-wrap').style.display = 'block';
+      // document.querySelector('.login__btn-signout').style.display = 'none';
+      // document.querySelector('.watch_queue_list').style.display = 'none';
+      // document.querySelector('.login__email').style.display = 'block';
+      // document.querySelector('.login__password').style.display = 'block';
       //   alert('We have no user');
     }
   });
