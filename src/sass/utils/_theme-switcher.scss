@@ -1,0 +1,37 @@
+[dark] {
+    --text-color: #f0f0f0;
+    --second-text-color: #b92f2c;
+
+    --bg-color: #333;
+
+    --btn-bg-main-color: #333;
+    --btn-bg-second-color: #b92f2c;
+    /*--icon-bg-svg: url(/images/icons.svg#icon-moon);*/
+}
+
+.icon-theme-switcher {
+    width: 35px;
+    height: 35px;
+    font-size: 35px;
+    color: var(--text-color);
+    align-items: center;
+}
+
+.btn-theme-switcher {
+    align-items: center;
+    justify-self: center;
+    background-color: transparent;
+    display: flex;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    position: fixed;
+    /*background-image: var(--icon-bg-svg);*/
+    background-size: contain;
+}
+
+.btn-theme-switcher:hover {
+    border: 1px solid var(--text-color);
+    background-color: rgba(209, 209, 211, 0.3);
+}

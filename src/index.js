@@ -6,9 +6,9 @@ import { ulAdd } from './js/modal-dorabotka';
 import {} from './js/Btn-up';
 import { renderSearch } from './js/render-search';
 import './js/preloader';
+import './js/theme-switcher';
 
 renderTrending();
-
 import { handleLoadNextPaginationPage } from './js/unsplash-api';
 
 const btnPagination = document.querySelector('.tui-pagination');
