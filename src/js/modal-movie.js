@@ -64,4 +64,4 @@ function modalIsOpen() {
 
   getDateFromId(920);
 }
-liEl.addEventListener('click', hendlerClickCard);
+// liEl.addEventListener('click', hendlerClickCard);
