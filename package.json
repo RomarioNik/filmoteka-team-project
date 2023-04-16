@@ -25,14 +25,16 @@
     "tui-pagination": "^3.4.1"
   },
   "devDependencies": {
+    "@parcel/css": "^1.14.0",
     "@parcel/transformer-sass": "^2.6.0",
     "buffer": "^6.0.3",
     "parcel": "^2.6.0",
+    "parcel-namer-hashless": "^1.0.4",
     "parcel-reporter-clean-dist": "^1.0.4",
-    "path-browserify": "^1.0.1",
-    "process": "^0.11.10",
     "parcel-transformer-hbs": "^1.0.4",
-    "posthtml-include": "^1.7.4"
+    "path-browserify": "^1.0.1",
+    "posthtml-include": "^1.7.4",
+    "process": "^0.11.10"
   },
   "browserslist": "> 0.5%, last 2 versions, not dead"
 }
