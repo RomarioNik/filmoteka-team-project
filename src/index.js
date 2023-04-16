@@ -5,7 +5,14 @@ import {} from './js/Btn-up';
 import { renderSearch } from './js/render-search';
 
 renderTrending();
+
+import { handleLoadNextPaginationPage } from './js/unsplash-api';
+
+const btnPagination = document.querySelector('.tui-pagination');
+
+btnPagination.addEventListener('click', handleLoadNextPaginationPage);
 const ulHtml = document.querySelector('.film__gallery');
+
 console.log(ulHtml);
 ulHtml.addEventListener('click', ulAdd);
 firebase();
