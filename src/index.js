@@ -1,3 +1,4 @@
+import { hendlerClickCard } from './js/modal-movie';
 import { firebase } from './js/firebase/firebase';
 import { renderTrending } from './js/render-trending';
 import { ulAdd } from './js/modal-dorabotka';
