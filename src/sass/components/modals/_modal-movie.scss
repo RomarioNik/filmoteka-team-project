@@ -1,0 +1,136 @@
+.basicLightbox--visible {
+  opacity: 1;
+}
+.modal-movie {
+  width: 280px;
+  height: 500px;
+  padding: 20px;
+  background-color: #fff;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.modal-movie::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.modal-movie__img {
+  display: block;
+  width: 240px;
+  height: 357px;
+
+  margin-bottom: 20px;
+}
+.modal-movie__title {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: calc(23 / 20);
+  text-transform: uppercase;
+
+  color: #000000;
+
+  margin-bottom: 20px;
+}
+
+.modal-movie__wrap-text {
+  margin-bottom: 20px;
+}
+
+.modal-movie__about {
+  text-transform: uppercase;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: calc(16 / 12);
+
+  margin-bottom: 8px;
+}
+.modal-movie__desc {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: calc(20 / 12);
+
+  margin-bottom: 20px;
+}
+.modal-movie__Watch {
+  display: block;
+  padding: 10px 12px;
+  margin-right: 4px;
+  text-transform: uppercase;
+  background-color: transparent;
+  border: 1px solid #000000;
+  border-radius: 100px;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: calc(14 / 12);
+
+  color: #b92f2c;
+  &:hover,
+  &:focus {
+    background-color: #b92f2c;
+    box-shadow: 0px 0px 7px rgba(27, 27, 27, 0.15);
+
+    color: #ffffff;
+  }
+}
+.modal-movie__queue {
+  display: block;
+  padding: 10px 14px;
+  text-transform: uppercase;
+  background-color: transparent;
+  border: 1px solid #000000;
+  border-radius: 100px;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: calc(14 / 12);
+
+  color: #b92f2c;
+  &:hover,
+  &:focus {
+    background-color: #b92f2c;
+    box-shadow: 0px 0px 7px rgba(27, 27, 27, 0.15);
+
+    color: #ffffff;
+  }
+}
+.modal-movie__btn-wrap {
+  display: flex;
+}
+.modal-movie__wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 40px;
+  margin-bottom: 20px;
+}
+.modal-movie__wrap-key {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: calc(16 / 12);
+  color: #8c8c8c;
+}
+.modal-movie__wrap-value {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: calc(16 / 12);
+  color: #000000;
+  & span {
+    padding: 1 10px;
+    background-color: #b92f2c;
+    color: #ffffff;
+    border-radius: 5px;
+  }
+}
+.modal-movie__btn-close {
+  fill: #000000;
+}

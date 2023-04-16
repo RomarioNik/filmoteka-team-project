@@ -10,6 +10,10 @@ export const handleClickTestBtn = () => {
     `
   <div class="modal-login">
     <form class="login">
+      <p class="login__welcome">
+        <span class="login__hello">Hello,</span>
+        <span class="login__name"></span>
+      </p>
       <input
         class="login__email"
         type="email"

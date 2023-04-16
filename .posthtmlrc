@@ -3,5 +3,8 @@
     "posthtml-include": {
       "root": "./src"
     }
-  }
+  },
+  "namers": [
+    "parcel-namer-hashless"
+  ]
 }
