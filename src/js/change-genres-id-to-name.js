@@ -7,7 +7,11 @@ export async function changeGenresIdToName(movies) {
     const genresIdList = genresListResponce.data.genres;
     movies.results.forEach(element => {
       const array = element.genre_ids;
-      if (!array) return 'Other';
+      if (array.length == 0) {
+        element.genre_ids = ['Other'];
+        return;
+      }
+
       const genresNames = array.map(elem => {
         if (genresIdList.find(x => x.id === elem)) {
           return genresIdList.find(x => x.id === elem).name;
@@ -17,7 +21,7 @@ export async function changeGenresIdToName(movies) {
       });
 
       element.genre_ids = genresNames;
-     });
+    });
   } catch (err) {
     console.log(err);
   }

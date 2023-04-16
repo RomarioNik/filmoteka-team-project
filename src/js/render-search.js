@@ -11,16 +11,26 @@ import createFilmsCard from '../templates/gallery-card.hbs';
 const galleryListEl = document.querySelector('.film__gallery');
 const errorSearchMessage = document.querySelector('.js_error_search');
 
-export async function renderTrending(paginationPage = 1) {
-  errorSearchMessage.classList.add('is-hidden');
+export async function renderSearch(event, paginationPage = 1) {
+  event.preventDefault();
   const themoviedbAPI = new ThemoviedbAPI();
-  themoviedbAPI.page = paginationPage; // змінювати пагінацією.
+  themoviedbAPI.query =
+    event.currentTarget.elements['searchQuery'].value.trim();
+  themoviedbAPI.page = paginationPage; // змінювати пагінацією
   try {
-    const { data } = await themoviedbAPI.getTrending();
+    const { data } = await themoviedbAPI.searchMovies();
+    if (data.results.length === 0) {
+      errorSearchMessage.classList.remove('is-hidden');
+      return;
+    }
+
+    errorSearchMessage.classList.add('is-hidden');
+
     await filmNaneLength(data);
     await filmPosterLink(data);
     await changeGenresLength(data);
     await makeReleaseYear(data);
+
     galleryListEl.innerHTML = createFilmsCard(data.results);
   } catch (err) {
     console.log(err);

@@ -2,8 +2,6 @@ import { ThemoviedbAPI } from './themoviedb-api'
 export function ulAdd (event) {
 if (event.target.nodeName !== 'UL') {
 let idLi = event.target.dataset.id
-idLi = idLi.substring(1);
-console.log(idLi);
 async function renderMovieDetails(newId) {
     const themoviedbAPI = new ThemoviedbAPI();
       themoviedbAPI.movie_id = newId;

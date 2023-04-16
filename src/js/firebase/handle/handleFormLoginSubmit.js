@@ -18,6 +18,8 @@ export const handleFormLoginSubmit = async e => {
     await userSignIn(email, password)
       .then(userCredential => {
         alert('You have signed in succesefully');
+        e.target.elements.email.value = '';
+        e.target.elements.password.value = '';
       })
       .catch(error => {
         // рендер ошибки

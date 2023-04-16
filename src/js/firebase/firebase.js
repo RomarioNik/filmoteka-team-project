@@ -5,4 +5,4 @@ const refs = refsEl();
 
 // вешаем слушателя на кнопку открывающую модальное окно с формой.
 export const firebase = () => {};
-// refs.btnTestEl.addEventListener('click', handleClickTestBtn);
+refs.btnTestEl.addEventListener('click', handleClickTestBtn);
