@@ -1,5 +1,5 @@
 let quequeHistory = [];
 export function localeSettingQueue (link) {
     quequeHistory.push(link)
-    localStorage.setItem('historyQueue', quequeHistory)
+    localStorage.setItem('historyQueue', JSON.stringify(quequeHistory))
 }
