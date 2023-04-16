@@ -45,10 +45,14 @@
   &.tui-first,
   &.tui-last {
     display: none;
-    // @media screen and (min-width: 768px) {
-    //   display: flex;
-    // }
+    &:hover {
+      color: white;
+      background-color: #B92F2C;}
+    @media screen and (min-width: 768px) {
+      display: flex;
+      }
   }
+
   &.tui-prev-is-ellip,
   &.tui-next-is-ellip {
     display: none;

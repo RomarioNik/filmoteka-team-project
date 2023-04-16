@@ -13,7 +13,7 @@ const galleryListEl = document.querySelector('.film__gallery');
 const options = {
         totalItems: 1000,    
         itemsPerPage: 20,
-        visiblePages: 20,
+        visiblePages: 5,
         page: 1
     }
 
