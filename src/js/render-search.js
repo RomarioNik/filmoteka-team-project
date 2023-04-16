@@ -9,6 +9,7 @@ import { filmPosterLink } from './film-poster-check-link';
 import createFilmsCard from '../templates/gallery-card.hbs';
 
 const galleryListEl = document.querySelector('.film__gallery');
+const errorSearchMessage = document.querySelector('.js_error_search');
 
 export async function renderSearch(event, paginationPage = 1) {
   event.preventDefault();
@@ -18,6 +19,13 @@ export async function renderSearch(event, paginationPage = 1) {
   themoviedbAPI.page = paginationPage; // змінювати пагінацією
   try {
     const { data } = await themoviedbAPI.searchMovies();
+    if (data.results.length === 0) {
+      errorSearchMessage.classList.remove('is-hidden');
+      return;
+    }
+
+    errorSearchMessage.classList.add('is-hidden');
+
     await filmNaneLength(data);
     await filmPosterLink(data);
     await changeGenresLength(data);
