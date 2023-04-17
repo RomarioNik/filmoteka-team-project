@@ -11,11 +11,11 @@ import createFilmsCard from '../templates/gallery-card.hbs';
 const galleryListEl = document.querySelector('.film__gallery');
 const errorSearchMessage = document.querySelector('.js_error_search');
 
+const inputSearch = document.querySelector('.search_input');
 export async function renderSearch(event, paginationPage = 1) {
   event.preventDefault();
   const themoviedbAPI = new ThemoviedbAPI();
-  themoviedbAPI.query =
-    event.currentTarget.elements['searchQuery'].value.trim();
+  themoviedbAPI.query = inputSearch.value.trim();
   themoviedbAPI.page = paginationPage; // змінювати пагінацією
   try {
     const { data } = await themoviedbAPI.searchMovies();
