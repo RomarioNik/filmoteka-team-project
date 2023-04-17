@@ -28,6 +28,12 @@ export async function handleLoadNextPaginationPage(event) {
       renderSearch(event, pagination._currentPage);
     }
   } else {
+    const themoviedbAPI = new ThemoviedbAPI();
+    const { data } = await themoviedbAPI.getTrending();
+    console.log(data.total_results);
+    initialTotalItems = data.total_results
+    pagination.setTotalItems(initialTotalItems)
+
     renderTrending(pagination._currentPage);
   }
   window.scrollTo({
