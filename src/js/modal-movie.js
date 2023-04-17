@@ -15,11 +15,11 @@ export const hendlerClickCard = event => {
 };
 // создает разметку модалки и вызывается в экземпляре BasicLightBox
 function createModalWindow(data) {
-  console.log();
   return `
-  <button class="modal-movie__btn-close" data-close type='button' > 
+<button class="modal-movie__btn-close" data-close type='button' > 
 X
 </button> 
+<svg><use href="./images/icons.svg#icon-search"></use></svg>
  
   <img src="https://image.tmdb.org/t/p/w400${
     data.poster_path
@@ -52,7 +52,6 @@ X
     } data-btnname="queue">add to queue</button> 
     </div> 
  </div>
-   
   `;
 }
 
