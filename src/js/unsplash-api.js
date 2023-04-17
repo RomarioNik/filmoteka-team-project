@@ -14,9 +14,14 @@ const options = {
 
 const pagination = new Pagination('pagination', options);
 
-export function handleLoadNextPaginationPage() {
+export function handleLoadNextPaginationPage(event) {
   if (inputSearch.value) {
-    renderSearch(event, pagination._currentPage);
+    if (event.type === 'submit') {
+      pagination.reset();
+      renderSearch(event, 1);
+    } else {
+      renderSearch(event, pagination._currentPage);
+    }
   } else {
     renderTrending(pagination._currentPage);
   }
