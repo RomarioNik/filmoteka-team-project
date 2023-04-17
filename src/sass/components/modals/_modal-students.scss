@@ -27,8 +27,8 @@
 .close-btn {
   display: flex;
   position: absolute;
-  top: 20px;
-  right: 35px;
+  top: 15px;
+  right: 23px;
   justify-content: center;
   align-items: center;
   padding: 0;
@@ -46,9 +46,14 @@
   &:focus {
     background-color: var(--second-text-color);
   }
+
+  @media screen and (min-width: 768px) {
+    top: 20px;
+    right: 35px;
+  }
 }
 
-.student-modal-header {
+.student-modal__header {
   display: flex;
   justify-content: center;
   margin-bottom: 7px;
@@ -113,7 +118,7 @@
     0px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
-.student-text-wrap {
+.student-text__wrap {
   display: flex;
   justify-content: center;
   align-items: center;
