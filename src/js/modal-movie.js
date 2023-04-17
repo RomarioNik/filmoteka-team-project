@@ -35,9 +35,9 @@ function createModalWindow(data) {
  <div class="movie-modal__content">
     <h2 class="modal-movie__title">${data.original_title}</h2> 
   <ul class=modal-movie__list>
-  <li class="movie-modal__list-item"><p>Vote/Votes</p><span class="active">${data.vote_average.toFixed(
+  <li class="movie-modal__list-item"><p>Vote/Votes</p><span><span class="active">${data.vote_average.toFixed(
     1
-  )}</span>  <span>/ ${data.vote_count}</span></li>
+  )}</span>  <span>/ ${data.vote_count}</span></span></li>
   <li class="movie-modal__list-item"><p>popularity </p><span>${data.popularity.toFixed(
     1
   )}</span> </li>
@@ -78,7 +78,16 @@ async function getDateFromId(id) {
 }
 
 async function modalIsOpen(ids) {
-  const instance = BasicLightBox.create('<div class="modal-movie"></div>');
+  const instance = BasicLightBox.create('<div class="modal-movie"></div>', {
+    onShow: instance => {
+      console.log('Я открылась');
+      document.body.classList.add('modal-open');
+    },
+    onClose: instance => {
+      window.removeEventListener('keydown', modalClose);
+      document.body.classList.remove('modal-open');
+    },
+  });
   instance.show();
   await getDateFromId(ids);
   if (instance.visible()) {
@@ -86,12 +95,12 @@ async function modalIsOpen(ids) {
     closeBtn.addEventListener('click', () => {
       instance.close();
     });
-    // window.addEventListener('keydown', evt => {
-    //   console.log('click');
-    //   if (evt.code === 'Escape') {
-    //     instance.close();
-    //   }
-    // });
+    window.addEventListener('keydown', modalClose);
+    function modalClose(evt) {
+      if (evt.code === 'Escape') {
+        instance.close();
+      }
+    }
 
     document.querySelector('.modal-movie__Watch');
     // .addEventListener('click', handleClickMovieButton);
