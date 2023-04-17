@@ -110,8 +110,10 @@ async function modalIsOpen(ids) {
       setIdLocaleStorageQueue(event);
       if (searchingInfoButtonQueue(buttonQueueLocale)) {
         console.log('ADD');
+        event.currentTarget.textContent = 'remove to queue';
         return;
       }
+      event.currentTarget.textContent = 'add to queue';
       console.log('delete');
     });
 
@@ -120,9 +122,10 @@ async function modalIsOpen(ids) {
       setIdLocaleStorageWatch(event);
       if (searchingInfoButtonWatch(buttonnWatchedLocale)) {
         console.log('ADD');
+        event.currentTarget.textContent = 'remove to Watched';
         return;
       }
-
+      event.currentTarget.textContent = 'add to Watched';
       console.log('delete');
     });
   }
