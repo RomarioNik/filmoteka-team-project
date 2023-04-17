@@ -16,13 +16,18 @@ function createModalWindow(data) {
   return `
   <button class="modal-movie__btn-close" data-close type='button' > 
 X
-</button> 
- 
-  <img src="https://image.tmdb.org/t/p/w400${data.poster_path}" class="modal-movie__img" alt="${data.original_title}" /> 
+</button>  
+  <img src="https://image.tmdb.org/t/p/w400${
+    data.poster_path
+  }" class="modal-movie__img" alt="${data.original_title}" /> 
   <h2 class="modal-movie__title">${data.original_title}</h2> 
 <ul class=modal-movie__list>
-<li class="movie-modal__list-item"><p>Vote/Votes</p><span class="active">${data.vote_average.toFixed(1)}</span> / <span>${data.vote_count}</span></li>
-<li class="movie-modal__list-item"><p>popularity </p><span>${data.popularity.toFixed(1)}</span> </li>
+<li class="movie-modal__list-item"><p>Vote/Votes</p><span class="active">${data.vote_average.toFixed(
+    1
+  )}</span> / <span>${data.vote_count}</span></li>
+<li class="movie-modal__list-item"><p>popularity </p><span>${data.popularity.toFixed(
+    1
+  )}</span> </li>
 <li class="movie-modal__list-item"><p>Title</p> <span>${
     data.original_title
   }</span></li>
@@ -80,7 +85,3 @@ async function modalIsOpen(ids) {
 }
 
 ulEll.addEventListener('click', hendlerClickCard);
-
-
-
-

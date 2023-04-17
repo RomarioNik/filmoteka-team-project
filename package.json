@@ -36,5 +36,11 @@
     "posthtml-include": "^1.7.4",
     "process": "^0.11.10"
   },
+  "parcel-namer-hashless": {
+    "include": [
+      ".svg"
+    ],
+    "mode": "all"
+  },
   "browserslist": "> 0.5%, last 2 versions, not dead"
 }
