@@ -1,6 +1,8 @@
 import * as BasicLightBox from 'basiclightbox';
 import { ThemoviedbAPI } from './themoviedb-api';
 import { ulAdd } from './modal-dorabotka';
+import { changeGenresLength } from './change-genres-length';
+
 const ulEll = document.querySelector('.film__gallery');
 
 export const hendlerClickCard = event => {
@@ -13,6 +15,7 @@ export const hendlerClickCard = event => {
 };
 // создает разметку модалки и вызывается в экземпляре BasicLightBox
 function createModalWindow(data) {
+  console.log();
   return `
   <button class="modal-movie__btn-close" data-close type='button' > 
 X
@@ -21,30 +24,34 @@ X
   <img src="https://image.tmdb.org/t/p/w400${
     data.poster_path
   }" class="modal-movie__img" alt="${data.original_title}" /> 
-  <h2 class="modal-movie__title">${data.original_title}</h2> 
-<ul class=modal-movie__list>
-<li class="movie-modal__list-item"><p>Vote/Votes</p><span class="active">${data.vote_average.toFixed(
+ <div class="movie-modal__content">
+    <h2 class="modal-movie__title">${data.original_title}</h2> 
+  <ul class=modal-movie__list>
+  <li class="movie-modal__list-item"><p>Vote/Votes</p><span class="active">${data.vote_average.toFixed(
     1
-  )}</span> / <span>${data.vote_count}</span></li>
-<li class="movie-modal__list-item"><p>popularity </p><span>${data.popularity.toFixed(
+  )}</span>  <span>/ ${data.vote_count}</span></li>
+  <li class="movie-modal__list-item"><p>popularity </p><span>${data.popularity.toFixed(
     1
   )}</span> </li>
-<li class="movie-modal__list-item"><p>Title</p> <span>${
+  <li class="movie-modal__list-item"><p>Title</p> <span>${
     data.original_title
   }</span></li>
-<li class="movie-modal__list-item"><p>genres</p> </li>
-</ul>
-
-  <h3 class="modal-movie__about">About</h3> 
-  <p class="modal-movie__desc">${data.overview}</p> 
- <div class="modal-movie__btn-wrap"> 
-  <button type="button" class="modal-movie__Watch" data-id=${
-    data.id
-  } data-btnname="watched">add to Watched</button> 
-  <button type="button" class="modal-movie__queue" data-id=${
-    data.id
-  } data-btnname="queue">add to queue</button> 
-  </div> 
+  <li class="movie-modal__list-item"><p>genres</p> <span>${data.genres
+    .map(el => el.name)
+    .join(', ')}</span> </li>
+  </ul>
+  
+    <h3 class="modal-movie__about">About</h3> 
+    <p class="modal-movie__desc">${data.overview}</p> 
+   <div class="modal-movie__btn-wrap"> 
+    <button type="button" class="modal-movie__Watch" data-id=${
+      data.id
+    } data-btnname="watched">add to Watched</button> 
+    <button type="button" class="modal-movie__queue" data-id=${
+      data.id
+    } data-btnname="queue">add to queue</button> 
+    </div> 
+ </div>
    
   `;
 }

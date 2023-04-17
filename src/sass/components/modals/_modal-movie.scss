@@ -10,17 +10,39 @@
   overflow: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    width: 704px;
+    height: 552px;
+    padding: 40px 72px 64px 36px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 806px;
+    height: 558px;
+    padding: 40px 12px;
+  }
 }
+
 .modal-movie::-webkit-scrollbar {
   width: 0;
   height: 0;
 }
+.movie-modal__content {
+  @media screen and (min-width: 768px) {
+    margin-left: 68px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-left: 16px;
+  }
+}
 .modal-movie__img {
   display: block;
-  width: 240px;
-  height: 357px;
 
   margin-bottom: 20px;
+  @media screen and (min-width: 768px) {
+    margin: 0;
+  }
 }
 .modal-movie__title {
   font-weight: 500;
@@ -31,6 +53,10 @@
   color: #000000;
 
   margin-bottom: 20px;
+  @media screen and (min-width: 1280px) {
+    font-size: 30px;
+    line-height: calc(35 / 30);
+  }
 }
 
 .modal-movie__wrap-text {
@@ -56,6 +82,7 @@
 .modal-movie__Watch {
   display: block;
   width: 100%;
+  max-width: 165px;
   padding: 10px 0;
   margin-right: 4px;
   text-transform: uppercase;
@@ -75,10 +102,14 @@
 
     color: #ffffff;
   }
+  @media screen and (min-width: 1280px) {
+    padding: 14px 0;
+  }
 }
 .modal-movie__queue {
   display: block;
   width: 100%;
+  max-width: 134px;
   padding: 10px 0;
   text-transform: uppercase;
   background-color: transparent;
@@ -97,31 +128,14 @@
 
     color: #ffffff;
   }
+  @media screen and (min-width: 1280px) {
+    padding: 14px 0;
+  }
 }
 .modal-movie__btn-wrap {
   display: flex;
 }
-.modal-movie__wrap {
-  display: flex;
-  align-items: baseline;
-  gap: 40px;
-  margin-bottom: 20px;
-}
-.modal-movie__wrap-key {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
 
-  font-weight: 500;
-  font-size: 12px;
-  line-height: calc(16 / 12);
-  color: #8c8c8c;
-}
-.modal-movie__wrap-value {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
 .modal-movie__btn-close {
   position: absolute;
   top: 8px;
@@ -144,8 +158,10 @@
 .movie-modal__list-item {
   display: flex;
   & p {
-    width: 100px;
-    display: inline-block;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: calc(16 / 12);
+    color: #8c8c8c;
   }
   & span {
     text-transform: uppercase;
