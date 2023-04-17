@@ -14,18 +14,23 @@
             </ul>
           </nav>
 
-          <form class="search_form" action="#">
-            <input
-              class="search_input"
-              type="text"
-              placeholder="Movie Search"
-            />
-            <button class="search_btn">
-              <svg class="search_btn_icon" width="15" height="15">
-                <use href="./images/icons.svg#icon-search"></use>
-              </svg>
-            </button>
-          </form>
+
+          <div class="form_wrap">
+            <form class="search_form js_header_search_form" action="#">
+              <input
+                class="search_input"
+                name="searchQuery"
+                type="text"
+                placeholder="Movie Search"
+              />
+              <button class="search_btn">
+                <svg class="search_btn_icon" width="15" height="15">
+                  <use href="./images/icons.svg#icon-search"></use>
+                </svg>
+              </button>
+            </form>
+          </div>
+
         </div>
 
         <p class="error_search js_error_search">

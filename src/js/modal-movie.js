@@ -1,10 +1,11 @@
 import * as BasicLightBox from 'basiclightbox';
 import { ThemoviedbAPI } from './themoviedb-api';
-import { ulAdd } from './modal-dorabotka';
-import { changeGenresLength } from './change-genres-length';
+import { setIdLocaleStorageQueue } from './localeStorageQueue';
+import { setIdLocaleStorageWatch } from './localeStorageWatch';
+import { searchingInfoButtonQueue } from './proverkaSettingsQueue';
+import { searchingInfoButtonWatch } from './proverkaSettingsWatch';
 
 const ulEll = document.querySelector('.film__gallery');
-
 export const hendlerClickCard = event => {
   // проверяю, клик по карточке или нет.
   if (event.target.nodeName !== 'UL') {
@@ -103,8 +104,28 @@ async function modalIsOpen(ids) {
 
     document.querySelector('.modal-movie__Watch');
     // .addEventListener('click', handleClickMovieButton);
-    document.querySelector('.modal-movie__queue');
+    // document.querySelector('.modal-movie__queue');
     // .addEventListener('click', handleClickMovieButton);
+    const buttonQueueLocale = document.querySelector('.modal-movie__queue');
+    buttonQueueLocale.addEventListener('click', event => {
+      setIdLocaleStorageQueue(event);
+      if (searchingInfoButtonQueue(buttonQueueLocale)) {
+        console.log('ADD');
+        return;
+      }
+      console.log('delete');
+    });
+
+    const buttonnWatchedLocale = document.querySelector('.modal-movie__Watch');
+    buttonnWatchedLocale.addEventListener('click', event => {
+      setIdLocaleStorageWatch(event);
+      if (searchingInfoButtonWatch(buttonnWatchedLocale)) {
+        console.log('ADD');
+        return;
+      }
+
+      console.log('delete');
+    });
   }
 }
 

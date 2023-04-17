@@ -14,13 +14,21 @@ const options = {
 
 const pagination = new Pagination('pagination', options);
 
-export function handleLoadNextPaginationPage() {
+export function handleLoadNextPaginationPage(event) {
   if (inputSearch.value) {
-    renderSearch(event, pagination._currentPage);
-
-} else {
-  renderTrending(pagination._currentPage);
-}
-  
-console.log(inputSearch.value)
+    if (event.type === 'submit') {
+      pagination.reset();
+      renderSearch(event, 1);
+    } else {
+      renderSearch(event, pagination._currentPage);
+    }
+  } else {
+    renderTrending(pagination._currentPage);
+  }
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth',
+  });
+  // console.log(inputSearch.value)
 }
