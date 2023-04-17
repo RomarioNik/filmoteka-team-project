@@ -12,9 +12,8 @@ export const hendlerClickCard = event => {
     let idLi = event.target.dataset.id;
     modalIsOpen(idLi);
   }
-  // открывает модальное окно
 };
-// создает разметку модалки и вызывается в экземпляре BasicLightBox
+
 function createModalWindow(data) {
   return `
 <button class="modal-movie__btn-close" data-close type='button' > 
