@@ -1,7 +1,10 @@
 import * as BasicLightBox from 'basiclightbox';
 import { ThemoviedbAPI } from './themoviedb-api';
-import { ulAdd } from './modal-dorabotka';
+import { setIdLocaleStorageQueue } from './localeStorageQueue';
+import { setIdLocaleStorageWatch } from './localeStorageWatch';
+import { searchingInfoButtonQueue } from './proverkaSettingsQueue';
 const ulEll = document.querySelector('.film__gallery');
+import { searchingInfoButtonWatch } from './proverkaSettingsWatch';
 
 export const hendlerClickCard = event => {
   // проверяю, клик по карточке или нет.
@@ -16,8 +19,7 @@ function createModalWindow(data) {
   return `
   <button class="modal-movie__btn-close" data-close type='button' > 
 X
-</button> 
- 
+</button>
   <img src="https://image.tmdb.org/t/p/w400${
     data.poster_path
   }" class="modal-movie__img" alt="${data.original_title}" /> 
@@ -38,15 +40,9 @@ X
   <h3 class="modal-movie__about">About</h3> 
   <p class="modal-movie__desc">${data.overview}</p> 
  <div class="modal-movie__btn-wrap"> 
-  <button type="button" class="modal-movie__Watch" data-id=${
-    data.id
-  } data-btnname="watched">add to Watched</button> 
-  <button type="button" class="modal-movie__queue" data-id=${
-    data.id
-  } data-btnname="queue">add to queue</button> 
-  </div> 
-   
-  `;
+  <button type="button" class="modal-movie__Watch" data-id=${data.id} data-btnname="watched">add to Watched</button> 
+  <button type="button" class="modal-movie__queue" data-id=${data.id} data-btnname="queue">add to queue</button> 
+  </div>`;
 }
 
 async function getDateFromId(id) {
@@ -78,10 +74,30 @@ async function modalIsOpen(ids) {
     //     instance.close();
     //   }
     // });
-    document.querySelector('.modal-movie__Watch');
+    // document.querySelector('.modal-movie__Watch');
     // .addEventListener('click', handleClickMovieButton);
-    document.querySelector('.modal-movie__queue');
+    // document.querySelector('.modal-movie__queue');
     // .addEventListener('click', handleClickMovieButton);
+    const buttonQueueLocale = document.querySelector('.modal-movie__queue')
+    buttonQueueLocale.addEventListener('click',(event)=> {
+      setIdLocaleStorageQueue(event)
+      if(searchingInfoButtonQueue(buttonQueueLocale)){
+        console.log('ADD')
+        return
+            }
+            console.log('delete')
+    })
+
+    const buttonnWatchedLocale = document.querySelector('.modal-movie__Watch')
+    buttonnWatchedLocale.addEventListener('click',(event) => {
+      setIdLocaleStorageWatch(event)
+      if(searchingInfoButtonWatch(buttonnWatchedLocale)){
+        console.log('ADD')
+return
+      }
+      
+      console.log('delete')
+    })
   }
 }
 
