@@ -101,32 +101,50 @@ async function modalIsOpen(ids) {
       }
     }
 
-    document.querySelector('.modal-movie__Watch');
+function proverkaLoadingLocaleQ (btnka) {
+  if (searchingInfoButtonQueue(btnka)) {
+    btnka.textContent = 'remove to queue';
+    return;
+  }
+  btnka.textContent = 'add to queue';
+}
+
+function proverkaLoadingLocaleW (btnka) {
+  if (searchingInfoButtonWatch(btnka)) {
+    btnka.textContent = 'remove to Watched';
+    return;
+  }
+  btnka.textContent = 'add to Watched';
+}
+
+
+
+
+    // document.querySelector('.modal-movie__Watch');
+    const buttonQueueLocale = document.querySelector('.modal-movie__queue');
+    const buttonnWatchedLocale = document.querySelector('.modal-movie__Watch');
     // .addEventListener('click', handleClickMovieButton);
     // document.querySelector('.modal-movie__queue');
     // .addEventListener('click', handleClickMovieButton);
-    const buttonQueueLocale = document.querySelector('.modal-movie__queue');
+    proverkaLoadingLocaleQ(buttonQueueLocale)
+    proverkaLoadingLocaleW(buttonnWatchedLocale)
     buttonQueueLocale.addEventListener('click', event => {
       setIdLocaleStorageQueue(event);
       if (searchingInfoButtonQueue(buttonQueueLocale)) {
-        console.log('ADD');
         event.currentTarget.textContent = 'remove to queue';
         return;
       }
       event.currentTarget.textContent = 'add to queue';
-      console.log('delete');
     });
 
-    const buttonnWatchedLocale = document.querySelector('.modal-movie__Watch');
+  
     buttonnWatchedLocale.addEventListener('click', event => {
       setIdLocaleStorageWatch(event);
       if (searchingInfoButtonWatch(buttonnWatchedLocale)) {
-        console.log('ADD');
         event.currentTarget.textContent = 'remove to Watched';
         return;
       }
       event.currentTarget.textContent = 'add to Watched';
-      console.log('delete');
     });
   }
 }
