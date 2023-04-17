@@ -1,4 +1,5 @@
 import { hendlerClickCard } from './js/modal-movie';
+import { handleOpenModalClick } from './js/modal-students';
 import { firebase } from './js/firebase/firebase';
 import { checkAuthState } from './js/firebase/auth/checkAuthState';
 import { renderTrending } from './js/render-trending';
