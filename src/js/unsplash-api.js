@@ -17,10 +17,13 @@ const pagination = new Pagination('pagination', options);
 export function handleLoadNextPaginationPage() {
   if (inputSearch.value) {
     renderSearch(event, pagination._currentPage);
-
-} else {
-  renderTrending(pagination._currentPage);
-}
-  
-console.log(inputSearch.value)
+  } else {
+    renderTrending(pagination._currentPage);
+  }
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: 'smooth',
+  });
+  // console.log(inputSearch.value)
 }
