@@ -3,6 +3,9 @@ import 'tui-pagination/dist/tui-pagination.css';
 import { renderTrending } from './render-trending';
 
 import { renderSearch } from './render-search';
+
+import { ThemoviedbAPI } from './themoviedb-api';
+
 const inputSearch = document.querySelector('.search_input');
 
 const options = {
