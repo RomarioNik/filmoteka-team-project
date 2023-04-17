@@ -8,6 +8,8 @@ import { ThemoviedbAPI } from './themoviedb-api';
 
 const inputSearch = document.querySelector('.search_input');
 
+let initialTotalItems;
+
 const options = {
   totalItems: 1000,
   itemsPerPage: 20,
