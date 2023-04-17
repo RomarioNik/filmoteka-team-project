@@ -17,9 +17,17 @@ export const hendlerClickCard = event => {
 function createModalWindow(data) {
   return `
 <button class="modal-movie__btn-close" data-close type='button' > 
-X
+<svg
+        width="30"
+        height="30"
+        viewBox="0 0 30 30"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M8 8L22 22" stroke="black" stroke-width="2"></path>
+        <path d="M8 22L22 8" stroke="black" stroke-width="2"></path>
+      </svg>
 </button> 
-<svg><use href="./images/icons.svg#icon-search"></use></svg>
+
  
   <img src="https://image.tmdb.org/t/p/w400${
     data.poster_path
@@ -84,6 +92,7 @@ async function modalIsOpen(ids) {
     //     instance.close();
     //   }
     // });
+
     document.querySelector('.modal-movie__Watch');
     // .addEventListener('click', handleClickMovieButton);
     document.querySelector('.modal-movie__queue');

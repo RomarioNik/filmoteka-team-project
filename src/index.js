@@ -1,4 +1,4 @@
-import { hendlerClickCard } from './js/modal-movie';
+import { hendlerClickCard } from './js/modal-movie'; // Точка входа в modal-movie
 import { firebase } from './js/firebase/firebase';
 import { checkAuthState } from './js/firebase/auth/checkAuthState';
 import { renderTrending } from './js/render-trending';
