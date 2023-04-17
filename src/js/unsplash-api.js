@@ -19,7 +19,7 @@ const options = {
 
 const pagination = new Pagination('pagination', options);
 
-export function handleLoadNextPaginationPage(event) {
+export async function handleLoadNextPaginationPage(event) {
   if (inputSearch.value) {
     if (event.type === 'submit') {
       pagination.reset();
