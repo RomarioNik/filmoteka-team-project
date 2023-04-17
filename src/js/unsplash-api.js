@@ -25,6 +25,14 @@ export async function handleLoadNextPaginationPage(event) {
       pagination.reset();
       renderSearch(event, 1);
     } else {
+      const themoviedbAPI = new ThemoviedbAPI();
+
+    themoviedbAPI.query = inputSearch.value.trim();
+
+    const savedNumberSearchMovie = localStorage.getItem("numberSearchMovie");
+    const parsedSearchMovie = JSON.parse(savedNumberSearchMovie);
+    
+    pagination.setTotalItems(Number(parsedSearchMovie))
       renderSearch(event, pagination._currentPage);
     }
   } else {
