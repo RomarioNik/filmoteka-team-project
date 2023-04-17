@@ -78,12 +78,10 @@ async function modalIsOpen(ids) {
     //     instance.close();
     //   }
     // });
-    document
-      .querySelector('.modal-movie__Watch')
-      .addEventListener('click', handleClickMovieButton);
-    document
-      .querySelector('.modal-movie__queue')
-      .addEventListener('click', handleClickMovieButton);
+    document.querySelector('.modal-movie__Watch');
+    // .addEventListener('click', handleClickMovieButton);
+    document.querySelector('.modal-movie__queue');
+    // .addEventListener('click', handleClickMovieButton);
   }
 }
 
