@@ -26,6 +26,9 @@ export async function renderSearch(event, paginationPage = 1) {
   themoviedbAPI.page = paginationPage;
   try {
     const { data } = await themoviedbAPI.searchMovies();
+
+    localStorage.setItem("numberSearchMovie", JSON.stringify(data.total_results));
+
     if (data.results.length === 0) {
       errorSearchMessage.classList.remove('is-hidden');
       return;
