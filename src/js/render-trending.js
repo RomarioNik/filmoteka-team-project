@@ -14,7 +14,7 @@ const errorSearchMessage = document.querySelector('.js_error_search');
 export async function renderTrending(paginationPage = 1) {
   errorSearchMessage.classList.add('is-hidden');
   const themoviedbAPI = new ThemoviedbAPI();
-  themoviedbAPI.page = paginationPage; // змінювати пагінацією.
+  themoviedbAPI.page = paginationPage;
   try {
     const { data } = await themoviedbAPI.getTrending();
     await filmNaneLength(data);
@@ -22,6 +22,7 @@ export async function renderTrending(paginationPage = 1) {
     await changeGenresLength(data);
     await makeReleaseYear(data);
     galleryListEl.innerHTML = createFilmsCard(data.results);
+    console.log(data.results);
   } catch (err) {
     console.log(err);
   }

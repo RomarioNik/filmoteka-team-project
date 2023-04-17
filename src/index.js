@@ -18,6 +18,7 @@ firebase();
 
 const searchFormElement = document.querySelector('.js_header_search_form');
 searchFormElement.addEventListener('submit', renderSearch);
+
 (() => {
   window.addEventListener('DOMContentLoaded', () => {
     checkAuthState();
