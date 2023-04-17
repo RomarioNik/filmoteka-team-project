@@ -13,10 +13,17 @@ const errorSearchMessage = document.querySelector('.js_error_search');
 
 const inputSearch = document.querySelector('.search_input');
 export async function renderSearch(event, paginationPage = 1) {
-  event.preventDefault();
   const themoviedbAPI = new ThemoviedbAPI();
-  themoviedbAPI.query = inputSearch.value.trim();
-  themoviedbAPI.page = paginationPage; // змінювати пагінацією
+
+  if (event.type === 'submit') {
+    event.preventDefault();
+    themoviedbAPI.query =
+      event.currentTarget.elements['searchQuery'].value.trim();
+  } else {
+    themoviedbAPI.query = inputSearch.value.trim();
+  }
+
+  themoviedbAPI.page = paginationPage;
   try {
     const { data } = await themoviedbAPI.searchMovies();
     if (data.results.length === 0) {
