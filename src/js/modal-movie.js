@@ -17,7 +17,7 @@ export const hendlerClickCard = event => {
 function createModalWindow(data) {
   return `
 <button class="modal-movie__btn-close" data-close type='button' > 
-<svg
+<svg 
         width="30"
         height="30"
         viewBox="0 0 30 30"
@@ -27,6 +27,7 @@ function createModalWindow(data) {
         <path d="M8 22L22 8" stroke="black" stroke-width="2"></path>
       </svg>
 </button> 
+
 
  
   <img src="https://image.tmdb.org/t/p/w400${
@@ -70,7 +71,6 @@ async function getDateFromId(id) {
 
   try {
     const { data } = await api.getMovieDetails();
-    console.log(data);
     modalEl.insertAdjacentHTML('afterbegin', createModalWindow(data));
   } catch {
     err => console.warn(err);
@@ -80,7 +80,6 @@ async function getDateFromId(id) {
 async function modalIsOpen(ids) {
   const instance = BasicLightBox.create('<div class="modal-movie"></div>', {
     onShow: instance => {
-      console.log('Я открылась');
       document.body.classList.add('modal-open');
     },
     onClose: instance => {
