@@ -25,45 +25,40 @@
   @media screen and (min-width: 768px) {
     width: 500px;
     min-height: auto;
-    padding: 30px 30px;
+    padding: 20px 20px;
   }
 
   @media screen and (min-width: 1200px) {
     width: 700px;
     min-height: auto;
-    padding: 50px 0px;
+    padding: 35px 35px;
   }
 }
 
 .close-btn {
-  position: absolute;
-  right: 35px;
-  top: 20px;
   display: flex;
-  align-items: center;
+  position: absolute;
+  top: 20px;
+  right: 35px;
   justify-content: center;
+  align-items: center;
+  padding: 0;
   width: 30px;
   height: 30px;
-  border-radius: 50%;
-  border: none;
+  color: #000;
   background-color: transparent;
-  cursor: pointer;
+  border: none;
+  border-radius: 50%;
+
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     border-radius 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   &:hover,
   &:focus {
     background-color: var(--second-text-color);
-    border-radius: 50%;
   }
 }
 
-.close-btn-icon {
-  fill: var(--text-color);
-  .close-btn:hover &,
-  .close-btn:focus & {
-    fill: var(--bg-color);
-  }
-}
 .student-modal-header {
   display: flex;
   justify-content: center;
@@ -89,7 +84,7 @@
 
 @media screen and (min-width: 768px) {
   .students-list {
-    gap: 15px;
+    gap: 10px;
     height: auto;
     overflow-y: scroll;
     flex-direction: row;
@@ -101,7 +96,7 @@
 }
 @media screen and (min-width: 1200px) {
   .students-list {
-    gap: 20px;
+    gap: 15px;
   }
 }
 
