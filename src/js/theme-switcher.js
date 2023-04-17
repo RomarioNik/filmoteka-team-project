@@ -13,14 +13,16 @@ btn.addEventListener('click', (e) => {
 
     if (body.hasAttribute('dark')) {
         body.removeAttribute('dark', '');
-        iconMoon.classList.remove('visually-hidden')
-        iconSun.classList.add('visually-hidden')
+        iconMoon.classList.add('visually-hidden');
+        iconSun.classList.remove('visually-hidden');
         localStorage.removeItem('theme', 'dark');
+
     } else {
         body.setAttribute('dark', '');
-        iconMoon.classList.add('visually-hidden')
-        iconSun.classList.remove('visually-hidden')
+        iconMoon.classList.remove('visually-hidden');
+        iconSun.classList.add('visually-hidden');
         localStorage.setItem('theme', 'dark');
+
     }
 
     
@@ -29,8 +31,8 @@ btn.addEventListener('click', (e) => {
 
     if (localStorage.getItem('theme') !== null) {
         body.setAttribute('dark', '');
-        iconMoon.classList.add('visually-hidden')
-        iconSun.classList.remove('visually-hidden')
+        iconMoon.classList.remove('visually-hidden');
+        iconSun.classList.add('visually-hidden');
     }
 }
     
