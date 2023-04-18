@@ -9,6 +9,7 @@ import { handleLoadNextPaginationPage } from './js/unsplash-api';
 import './js/preloader';
 import { onWatchedBtnClick, onQueueBtnClick } from './js/render-library-by-id';
 
+console.log(process.env.API_KEY);
 renderTrending();
 
 import { handleLoadNextPaginationPage } from './js/unsplash-api';
@@ -27,5 +28,3 @@ watchedHeaderBtn.addEventListener('click', onWatchedBtnClick);
 
 const queueHeaderBtn = document.querySelector('.btn_queue');
 queueHeaderBtn.addEventListener('click', onQueueBtnClick);
-
-console.log(process.env.API_KEY);
