@@ -49,7 +49,9 @@ function createModalWindow(data) {
   <li class="movie-modal__list-item"><p>Title</p> <span>${
     data.original_title
   }</span></li>
-<li class="movie-modal__list-item"><p>genres</p> </li>
+<li class="movie-modal__list-item"><p>genres</p><span>${data.genres
+    .map(el => el.name)
+    .join(', ')}</span></li>
 </ul>
 
   <h3 class="modal-movie__about">About</h3> 
