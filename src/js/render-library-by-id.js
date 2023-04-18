@@ -36,3 +36,12 @@ export function onWatchedBtnClick() {
   ];
   renderCardsById(ids);
 }
+
+export function onQueueBtnClick() {
+  let ids = [
+    948713, 594767, 700391, 76600, 502356, 603692, 842675, 640146, 736790,
+    800787, 739405, 1073413, 677179, 1011367, 719256, 1067282, 1110586, 1070777,
+    830896, 493529,
+  ];
+  renderCardsById(ids);
+}

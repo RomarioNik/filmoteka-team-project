@@ -7,7 +7,7 @@ import { ulAdd } from './js/modal-dorabotka';
 import {} from './js/Btn-up';
 import { handleLoadNextPaginationPage } from './js/unsplash-api';
 import './js/preloader';
-import { onWatchedBtnClick } from './js/render-library-by-id';
+import { onWatchedBtnClick, onQueueBtnClick } from './js/render-library-by-id';
 
 renderTrending();
 
@@ -29,3 +29,6 @@ searchFormElement.addEventListener('submit', handleLoadNextPaginationPage);
 
 const watchedHeaderBtn = document.querySelector('.btn_watch');
 watchedHeaderBtn.addEventListener('click', onWatchedBtnClick);
+
+const queueHeaderBtn = document.querySelector('.btn_queue');
+queueHeaderBtn.addEventListener('click', onQueueBtnClick);
