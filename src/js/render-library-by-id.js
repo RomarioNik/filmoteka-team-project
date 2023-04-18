@@ -7,13 +7,7 @@ import { filmPosterLink } from './film-poster-check-link';
 
 const galleryListEl = document.querySelector('.film__gallery');
 
-let idArray = [
-  948713, 594767, 700391, 76600, 502356, 603692, 842675, 640146, 736790, 800787,
-  739405, 1073413, 677179, 1011367, 719256, 1067282, 1110586, 1070777, 830896,
-  493529,
-];
-
-export async function renderCardsById() {
+export async function renderCardsById(idArray) {
   const themoviedbAPI = new ThemoviedbAPI();
 
   const arrayOfPromises = idArray.map(async id => {
@@ -32,8 +26,13 @@ export async function renderCardsById() {
   // await changeGenresLength(cards);
   // await makeReleaseYear(cards);
   galleryListEl.innerHTML = createFilmsCard(cards);
-  //тут додаємо функції підміни дат, жанрів і т.п.
 }
 
-// renderCardsById(ids);
-// renderCardsById();
+export function onWatchedBtnClick() {
+  let ids = [
+    948713, 594767, 700391, 76600, 502356, 603692, 842675, 640146, 736790,
+    800787, 739405, 1073413, 677179, 1011367, 719256, 1067282, 1110586, 1070777,
+    830896, 493529,
+  ];
+  renderCardsById(ids);
+}
