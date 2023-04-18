@@ -18,6 +18,7 @@
     "url": "https://github.com/RomarioNik/filmoteka-team-project/issues"
   },
   "dependencies": {
+    "@lmdb/lmdb-darwin-arm64": "^2.7.11",
     "axios": "^1.3.5",
     "basiclightbox": "^5.0.4",
     "firebase": "^9.19.1",
