@@ -4,8 +4,10 @@
 .modal-movie {
   position: relative;
   width: 280px;
+
   height: 500px;
   padding: 48px 20px 20px;
+
   background-color: var(--btn-text-color);
   overflow: auto;
   -ms-overflow-style: none;
@@ -22,6 +24,7 @@
     height: 558px;
     padding: 40px 12px;
   }
+
 }
 
 .modal-movie::-webkit-scrollbar {

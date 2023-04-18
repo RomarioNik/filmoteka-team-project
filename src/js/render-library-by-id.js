@@ -7,6 +7,8 @@ import { filmPosterLinkById } from './film-poster-check-link';
 import { getUserData } from './firebase/crudData';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase/auth/getAuth';
+import { renderLocaleQueue } from './renderStorageQueue';
+import { renderLocaleWatch } from './renderStorageWatched';
 
 const galleryListEl = document.querySelector('.film__gallery');
 
@@ -40,7 +42,8 @@ export function onWatchedBtnClick() {
         736790, 800787, 739405, 1073413, 677179, 1011367, 719256, 1067282,
         1110586, 1070777, 830896, 493529,
       ];
-      renderCardsById(ids);
+      const arrData = renderLocaleWatch();
+      renderCardsById(arrData);
     } else {
       // если юзер вошел (логин, пароль) рендерим с сервера
       getUserData(getArrayOfIdMovies);
@@ -61,7 +64,8 @@ export function onQueueBtnClick() {
         842675, 640146, 736790, 800787, 739405, 1073413, 677179, 1011367,
         719256, 1067282, 1110586, 1070777, 830896, 493529, 1073413,
       ];
-      renderCardsById(ids);
+      const arrData = renderLocaleQueue();
+      renderCardsById(arrData);
     } else {
       // если юзер вошел (логин, пароль) рендерим с сервера
       getUserData(getArrayOfIdMovies);

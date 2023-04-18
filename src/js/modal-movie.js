@@ -30,10 +30,8 @@ function createModalWindow(data) {
         <path d="M8 8L22 22" stroke="black" stroke-width="2"></path>
         <path d="M8 22L22 8" stroke="black" stroke-width="2"></path>
       </svg>
-</button> 
+</button>  
 
-
- 
   <img src="https://image.tmdb.org/t/p/w400${
     data.poster_path
   }" class="modal-movie__img" alt="${data.original_title}" /> 
