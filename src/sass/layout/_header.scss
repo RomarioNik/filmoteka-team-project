@@ -178,15 +178,22 @@
     height: 42px;
   }
 }
+.btn_home:hover,
+.btn_home:focus,
+.btn_library:hover,
+.btn_library:focus {
+  background: var(--text-color);
+  color: var(--btn-bg-main-color);
+}
 
-// .btn_watched:hover,
-// .btn_watched:focus,
-// .btn_queue:hover,
-// .btn_queue:focus {
-//   color: var(--btn-bg-second-color);
-//   background: var(--btn-bg-main-color);
-//   cursor: pointer;
-// }
+.btn_watch:hover,
+.btn_watch:focus,
+.btn_queue:hover,
+.btn_queue:focus {
+  background: var(--btn-bg-second-color);
+  color: var(--btn-bg-main-color);
+  cursor: pointer;
+}
 
 .nav {
   @media screen and (min-width: 768px) {
