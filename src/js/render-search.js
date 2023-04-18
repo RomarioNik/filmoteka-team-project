@@ -13,6 +13,7 @@ const errorSearchMessage = document.querySelector('.js_error_search');
 
 const inputSearch = document.querySelector('.search_input');
 export async function renderSearch(event, paginationPage = 1) {
+  showPreloader ()
   const themoviedbAPI = new ThemoviedbAPI();
 
   if (event.type === 'submit') {
@@ -47,5 +48,6 @@ export async function renderSearch(event, paginationPage = 1) {
     return data;
   } catch (err) {
     console.log(err);
+    hidePreloader()
   }
 }
