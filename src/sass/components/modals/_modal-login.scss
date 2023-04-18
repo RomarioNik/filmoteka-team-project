@@ -56,4 +56,20 @@
 .login__btn-signout {
   padding: 14px 32px;
   font-weight: 500;
+  border: 2px solid #dfdfdf;
 }
+
+.login__btn-in:hover,
+.login__btn-in:focus,
+.login__btn-reg:hover,
+.login__btn-reg:focus,
+.login__btn-signout:hover,
+.login__btn-signout:focus {
+  padding: 14px 32px;
+  font-weight: 500;
+  border-color: var(--btn-bg-second-dark-color);
+  background-color: var(--btn-bg-second-dark-color);
+  color: var(--btn-text-color);
+}
+
+// -btn-bg-second-dark-color

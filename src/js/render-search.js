@@ -26,6 +26,12 @@ export async function renderSearch(event, paginationPage = 1) {
   themoviedbAPI.page = paginationPage;
   try {
     const { data } = await themoviedbAPI.searchMovies();
+
+    localStorage.setItem(
+      'numberSearchMovie',
+      JSON.stringify(data.total_results)
+    );
+
     if (data.results.length === 0) {
       errorSearchMessage.classList.remove('is-hidden');
       return;
@@ -37,8 +43,8 @@ export async function renderSearch(event, paginationPage = 1) {
     await filmPosterLink(data);
     await changeGenresLength(data);
     await makeReleaseYear(data);
-
     galleryListEl.innerHTML = createFilmsCard(data.results);
+    return data;
   } catch (err) {
     console.log(err);
   }

@@ -15,7 +15,7 @@
     }
   }  
 
-.film__link {
+.film__card {
   list-style-type: none;
   margin: 0;
   width: 280px;
@@ -33,12 +33,12 @@
 &:focus {
       background: #ffffff;
       transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);      
-      border: 1px solid #B92F2C;
+      outline: 1px solid #B92F2C;
 }
 &:hover {
       background: #ffffff;
       transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
-      border: 1px solid #706f6f;        
+      outline: 1px solid #706f6f;        
 }
 }
 

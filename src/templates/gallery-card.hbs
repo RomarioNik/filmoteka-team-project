@@ -1,7 +1,6 @@
 {{#each this}}
-
-  <a class='film__link' data-id={{this.id}} href='#'>
     <li class='film__card' data-id={{this.id}}>
+    <a class='film__link' data-id={{this.id}} href='#'>
       <img
         class='film__img'
         src={{this.poster_path}}
@@ -13,6 +12,6 @@
         <p class='film__ganre' data-id={{this.id}}>{{this.genre_ids}}</p>
         <p class='film__year' data-id={{this.id}}>{{this.release_date}}</p>
       </div>
+       </a>
     </li>
-  </a>
 {{/each}}
