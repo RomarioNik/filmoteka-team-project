@@ -9,6 +9,7 @@ import { filmPosterLink } from './film-poster-check-link';
 import createFilmsCard from '../templates/gallery-card.hbs';
 
 const galleryListEl = document.querySelector('.film__gallery');
+
 const errorSearchMessage = document.querySelector('.js_error_search');
 
 export async function renderTrending(paginationPage = 1) {
@@ -21,9 +22,10 @@ export async function renderTrending(paginationPage = 1) {
     await filmPosterLink(data);
     await changeGenresLength(data);
     await makeReleaseYear(data);
+  
     galleryListEl.innerHTML = createFilmsCard(data.results);
-    // console.log(data.results);
+    console.log(data.results)
   } catch (err) {
-    console.log(err);
+   console.log(err);
   }
 }
