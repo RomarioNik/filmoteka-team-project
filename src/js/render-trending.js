@@ -3,7 +3,7 @@ import { ThemoviedbAPI } from './themoviedb-api';
 import { changeGenresLength } from './change-genres-length';
 import { makeReleaseYear } from './release-year';
 import { filmNaneLength } from './film-name-length';
-import { renderCardId } from './render-card-id';
+
 import { filmPosterLink } from './film-poster-check-link';
 
 import createFilmsCard from '../templates/gallery-card.hbs';
@@ -22,10 +22,10 @@ export async function renderTrending(paginationPage = 1) {
     await filmPosterLink(data);
     await changeGenresLength(data);
     await makeReleaseYear(data);
-    await renderCardId();
+  
     galleryListEl.innerHTML = createFilmsCard(data.results);
     //console.log(data.results);
   } catch (err) {
-   // console.log(err);
+   console.log(err);
   }
 }
