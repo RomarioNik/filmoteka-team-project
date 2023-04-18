@@ -35,15 +35,20 @@ export const handleClickTestBtn = () => {
     </form>
 </div>`,
     {
-      onShow: () => {},
+      onShow: () => {
+        document.body.classList.add('modal-open');
+      },
       // удаляем обработчиков событий
       onClose: () => {
         document
           .querySelector('.login')
-          .removeEventListener('submit', handleFormLoginSubmit(instance));
+          .removeEventListener('submit', handleFormLoginSubmit);
+
         document
           .querySelector('.login__btn-signout')
           .removeEventListener('click', handleClickSignOutBtn);
+
+        document.body.classList.remove('modal-open');
       },
     }
   );
