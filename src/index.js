@@ -27,3 +27,5 @@ watchedHeaderBtn.addEventListener('click', onWatchedBtnClick);
 
 const queueHeaderBtn = document.querySelector('.btn_queue');
 queueHeaderBtn.addEventListener('click', onQueueBtnClick);
+
+console.log(process.env.API_KEY);
