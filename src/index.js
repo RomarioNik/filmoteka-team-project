@@ -7,10 +7,10 @@ import { ulAdd } from './js/modal-dorabotka';
 import {} from './js/Btn-up';
 import { handleLoadNextPaginationPage } from './js/unsplash-api';
 import './js/preloader';
+import './js/theme-switcher';
 import { onWatchedBtnClick, onQueueBtnClick } from './js/render-library-by-id';
 
 renderTrending();
-
 import { handleLoadNextPaginationPage } from './js/unsplash-api';
 
 const btnPagination = document.querySelector('.tui-pagination');
