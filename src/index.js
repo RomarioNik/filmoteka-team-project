@@ -17,15 +17,10 @@ const btnPagination = document.querySelector('.tui-pagination');
 
 btnPagination.addEventListener('click', handleLoadNextPaginationPage);
 firebase();
+checkAuthState();
 
 const searchFormElement = document.querySelector('.js_header_search_form');
 searchFormElement.addEventListener('submit', handleLoadNextPaginationPage);
-
-(() => {
-  window.addEventListener('DOMContentLoaded', () => {
-    checkAuthState();
-  });
-})();
 
 const watchedHeaderBtn = document.querySelector('.btn_watch');
 watchedHeaderBtn.addEventListener('click', onWatchedBtnClick);

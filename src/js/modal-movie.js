@@ -4,6 +4,10 @@ import { setIdLocaleStorageQueue } from './localeStorageQueue';
 import { setIdLocaleStorageWatch } from './localeStorageWatch';
 import { searchingInfoButtonQueue } from './proverkaSettingsQueue';
 import { searchingInfoButtonWatch } from './proverkaSettingsWatch';
+import { updateButtonOnModal } from './firebase/updateButtonOnModal.js';
+import { handleClickMovieButton } from './handleModalFilmButton/handleModalFilmButton';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from './firebase/auth/getAuth';
 
 const ulEll = document.querySelector('.film__gallery');
 export const hendlerClickCard = event => {
@@ -45,23 +49,19 @@ function createModalWindow(data) {
   <li class="movie-modal__list-item"><p>Title</p> <span>${
     data.original_title
   }</span></li>
-  <li class="movie-modal__list-item"><p>genres</p> <span>${data.genres
-    .map(el => el.name)
-    .join(', ')}</span> </li>
-  </ul>
-  
-    <h3 class="modal-movie__about">About</h3> 
-    <p class="modal-movie__desc">${data.overview}</p> 
-   <div class="modal-movie__btn-wrap"> 
-    <button type="button" class="modal-movie__Watch" data-id=${
-      data.id
-    } data-btnname="watched">add to Watched</button> 
-    <button type="button" class="modal-movie__queue" data-id=${
-      data.id
-    } data-btnname="queue">add to queue</button> 
-    </div> 
- </div>
-  `;
+<li class="movie-modal__list-item"><p>genres</p> </li>
+</ul>
+
+  <h3 class="modal-movie__about">About</h3> 
+  <p class="modal-movie__desc">${data.overview}</p> 
+ <div class="modal-movie__btn-wrap"> 
+  <button type="button" class="modal-movie__Watch" data-id=${
+    data.id
+  } data-btnname="watched">add to Watched</button> 
+  <button type="button" class="modal-movie__queue" data-id=${
+    data.id
+  } data-btnname="queue">add to queue</button> 
+  </div>`;
 }
 
 async function getDateFromId(id) {
@@ -101,50 +101,61 @@ async function modalIsOpen(ids) {
       }
     }
 
-function proverkaLoadingLocaleQ (btnka) {
-  if (searchingInfoButtonQueue(btnka)) {
-    btnka.textContent = 'remove to queue';
-    return;
-  }
-  btnka.textContent = 'add to queue';
-}
+    // проверяем вошел ли пользователь
+    // и если не вошел, то сохраняем в localstorage
+    onAuthStateChanged(auth, user => {
+      if (user === null) {
+        function proverkaLoadingLocaleQ(btnka) {
+          if (searchingInfoButtonQueue(btnka)) {
+            btnka.textContent = 'remove to queue';
+            return;
+          }
+          btnka.textContent = 'add to queue';
+        }
 
-function proverkaLoadingLocaleW (btnka) {
-  if (searchingInfoButtonWatch(btnka)) {
-    btnka.textContent = 'remove to Watched';
-    return;
-  }
-  btnka.textContent = 'add to Watched';
-}
+        function proverkaLoadingLocaleW(btnka) {
+          if (searchingInfoButtonWatch(btnka)) {
+            btnka.textContent = 'remove to Watched';
+            return;
+          }
+          btnka.textContent = 'add to Watched';
+        }
 
+        const buttonQueueLocale = document.querySelector('.modal-movie__queue');
+        const buttonnWatchedLocale = document.querySelector(
+          '.modal-movie__Watch'
+        );
 
+        proverkaLoadingLocaleQ(buttonQueueLocale);
+        proverkaLoadingLocaleW(buttonnWatchedLocale);
+        buttonQueueLocale.addEventListener('click', event => {
+          setIdLocaleStorageQueue(event);
+          if (searchingInfoButtonQueue(buttonQueueLocale)) {
+            event.currentTarget.textContent = 'remove to queue';
+            return;
+          }
+          event.currentTarget.textContent = 'add to queue';
+        });
 
-
-    // document.querySelector('.modal-movie__Watch');
-    const buttonQueueLocale = document.querySelector('.modal-movie__queue');
-    const buttonnWatchedLocale = document.querySelector('.modal-movie__Watch');
-    // .addEventListener('click', handleClickMovieButton);
-    // document.querySelector('.modal-movie__queue');
-    // .addEventListener('click', handleClickMovieButton);
-    proverkaLoadingLocaleQ(buttonQueueLocale)
-    proverkaLoadingLocaleW(buttonnWatchedLocale)
-    buttonQueueLocale.addEventListener('click', event => {
-      setIdLocaleStorageQueue(event);
-      if (searchingInfoButtonQueue(buttonQueueLocale)) {
-        event.currentTarget.textContent = 'remove to queue';
-        return;
+        buttonnWatchedLocale.addEventListener('click', event => {
+          setIdLocaleStorageWatch(event);
+          if (searchingInfoButtonWatch(buttonnWatchedLocale)) {
+            event.currentTarget.textContent = 'remove to Watched';
+            return;
+          }
+          event.currentTarget.textContent = 'add to Watched';
+        });
+      } else {
+        // если пользователь вошел,
+        // то сораняем на сервер
+        updateButtonOnModal(ids);
+        document
+          .querySelector('.modal-movie__Watch')
+          .addEventListener('click', handleClickMovieButton);
+        document
+          .querySelector('.modal-movie__queue')
+          .addEventListener('click', handleClickMovieButton);
       }
-      event.currentTarget.textContent = 'add to queue';
-    });
-
-  
-    buttonnWatchedLocale.addEventListener('click', event => {
-      setIdLocaleStorageWatch(event);
-      if (searchingInfoButtonWatch(buttonnWatchedLocale)) {
-        event.currentTarget.textContent = 'remove to Watched';
-        return;
-      }
-      event.currentTarget.textContent = 'add to Watched';
     });
   }
 }
