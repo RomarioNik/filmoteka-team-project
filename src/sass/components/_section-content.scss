@@ -8,7 +8,7 @@
   @media screen and (min-width: 768px) {
     display: flex;
         flex-wrap: wrap;
-    gap: 30px;  
+    gap: 30px;
     }
     @media screen and (min-width: 1280px){
       min-width: 1280px;
@@ -25,7 +25,7 @@
   border-radius: 5px;
 
     @media screen and (min-width: 768px) {
-    width: 336px;
+    width: 342px;
     }
     @media screen and (min-width: 1280px) {
       width: 395px;
@@ -36,12 +36,12 @@
 &:focus {
       background: #ffffff;
       transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);      
-      border: 1px solid #B92F2C;
+      outline: 1px solid #B92F2C;
 }
 &:hover {
       background: #ffffff;
       transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
-      border: 1px solid #706f6f;        
+      outline: 1px solid #706f6f;        
 }
 }
 
@@ -54,7 +54,7 @@
   @media screen and (min-width: 768px) {
     height: 455px;    
     }
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 1280px) {
       height: 574px;      
       }
 }
@@ -75,7 +75,7 @@ color: #000000;
   margin-top: 8px;
   margin-bottom: 6px;
   }
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1280px) {
     font-size: 20px;
     line-height: 1,2;
     margin-top: 12px;
@@ -87,9 +87,9 @@ color: #000000;
   display: flex;
   padding-left: 10px;
   padding-bottom: 10px;
-  margin-bottom: 10px;
+ 
   @media screen and (min-width: 768px) {
-  margin-bottom: 14;
+ 
   }
 }
 
@@ -104,7 +104,7 @@ color: #000000;
   @media screen and (min-width: 768px) {
     line-height: 16px;
     }
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 1280px) {
       font-size: 20px;
       line-height: 24px;
       }

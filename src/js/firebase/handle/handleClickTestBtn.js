@@ -1,7 +1,7 @@
 import * as basicLightbox from 'basiclightbox';
 import { handleFormLoginSubmit } from './handleFormLoginSubmit';
-import { handleClickSignOutBtn } from './handleClickSignOutBtn';
 import { checkAuthState } from '../auth/checkAuthState';
+import { handleClickSignOutBtn } from './handleClickSignOutBtn';
 
 // событие происходит когда пользователь нажал кнопку открытия модального окна с полями для ввода данных
 export const handleClickTestBtn = () => {
@@ -35,30 +35,45 @@ export const handleClickTestBtn = () => {
     </form>
 </div>`,
     {
-      onShow: () => {},
+      onShow: () => {
+        document.body.classList.add('modal-open');
+      },
       // удаляем обработчиков событий
       onClose: () => {
         document
           .querySelector('.login')
           .removeEventListener('submit', handleFormLoginSubmit);
+
         document
           .querySelector('.login__btn-signout')
           .removeEventListener('click', handleClickSignOutBtn);
+
+        document.body.classList.remove('modal-open');
       },
     }
   );
 
   // открываем модальное окно
   instance.show();
+  // console.log(instance);
 
   // вешаем обработчиков событий
   document
     .querySelector('.login')
-    .addEventListener('submit', handleFormLoginSubmit);
+    .addEventListener('submit', handleFormLoginSubmit(instance));
+  // document
+  //   .querySelector('.login__btn-signout')
+  //   .addEventListener('click', handleClickSignOutBtn);
   document
     .querySelector('.login__btn-signout')
-    .addEventListener('click', handleClickSignOutBtn);
+    .addEventListener('click', handleClickSignOutBtn(instance));
 
   // проверка статуса пользователя: залогинен или нет+
   checkAuthState();
+
+  // // событие происходит когда пользователь нажал кнопку выхода
+  // async function handleClickSignOutBtn() {
+  //   instance.close();
+  //   await userSignOut();
+  // }
 };

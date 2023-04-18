@@ -1,6 +1,8 @@
 import { auth } from './auth/getAuth';
 import { getDatabase, ref, get, update, child } from 'firebase/database';
 import { onAuthStateChanged } from 'firebase/auth';
+import { handleClickTestBtn } from './handle/handleClickTestBtn.js';
+import { updateButtonOnModal } from './updateButtonOnModal';
 
 // object is on the server
 // {
@@ -11,14 +13,15 @@ import { onAuthStateChanged } from 'firebase/auth';
 // получаем бд
 const db = getDatabase();
 
-function writeUserData(id, nameButton) {
+export function writeUserData(id, nameButton) {
   // проверяем вошел ли пользователь
   onAuthStateChanged(auth, user => {
     if (user === null) {
-      alert('Please sign IN updateUserData :-)');
+      // alert('Please sign IN :-)');
+      handleClickTestBtn();
       return;
     }
-
+    console.log('writeUserData');
     const dbRef = ref(db);
     // получаем объект пользователя
     get(child(dbRef, `users/${user.uid}`))
@@ -45,8 +48,10 @@ function writeUserData(id, nameButton) {
           }
 
           // проверяем, если ли id в массиве
-          const isNumber = data[nameButton].some(el => el === id);
-          if (isNumber) {
+          const isNumber = data[nameButton].findIndex(el => el === id);
+          if (isNumber !== -1) {
+            data[nameButton].splice(isNumber, 1);
+            updateData(data);
             return;
           }
 
@@ -59,6 +64,7 @@ function writeUserData(id, nameButton) {
             update(ref(db, `users/${user.uid}`), newData)
               .then(() => {
                 console.log('Data updated');
+                updateButtonOnModal(id);
               })
               .catch(error => {
                 console.error(error);
@@ -77,11 +83,12 @@ function writeUserData(id, nameButton) {
 
 // writeUserData(594768, 'watched');
 
-function readUserData() {
+export function readUserData() {
   // проверяем вошел ли пользователь
   onAuthStateChanged(auth, user => {
     if (user === null) {
-      alert('Please sign IN readUserData :-)');
+      handleClickTestBtn(); // Это вызом модалки с логином
+      // alert('Please sign IN :-)');
       return;
     }
 
@@ -104,11 +111,11 @@ function readUserData() {
 }
 // readUserData();
 
-function removeUserData(id, nameButton) {
+export function removeUserData(id, nameButton) {
   // проверяем вошел ли пользователь
   onAuthStateChanged(auth, user => {
     if (user === null) {
-      alert('Please sign IN :-)');
+      handleClickTestBtn();
       return;
     }
 
@@ -145,3 +152,35 @@ function removeUserData(id, nameButton) {
   });
 }
 // removeUserData(594767, 'watched');
+
+export function getUserData(callback) {
+  // проверяем вошел ли пользователь
+  onAuthStateChanged(auth, user => {
+    if (user === null) {
+      // handleClickTestBtn();
+      // alert('Please sign IN readUserData :-)');
+      return;
+    }
+
+    const dbRef = ref(db);
+    // получаем объект пользователя
+    get(child(dbRef, `users/${user.uid}`))
+      .then(snapshot => {
+        if (snapshot.exists()) {
+          //   console.log(snapshot.val());
+          // проверяем, если ли данные
+          const data = snapshot.val();
+          if (data === null) {
+            return;
+          }
+          callback(data);
+          // do something
+        } else {
+          console.log('No data available');
+        }
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  });
+}
