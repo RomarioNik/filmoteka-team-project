@@ -24,6 +24,7 @@ export async function renderTrending(paginationPage = 1) {
     await makeReleaseYear(data);
   
     galleryListEl.innerHTML = createFilmsCard(data.results);
+    console.log(data.results)
   } catch (err) {
    console.log(err);
   }
