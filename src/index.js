@@ -9,7 +9,6 @@ import { handleLoadNextPaginationPage } from './js/unsplash-api';
 import './js/preloader';
 import { onWatchedBtnClick, onQueueBtnClick } from './js/render-library-by-id';
 
-console.log(process.env.API_KEY);
 renderTrending();
 
 import { handleLoadNextPaginationPage } from './js/unsplash-api';
@@ -17,8 +16,8 @@ import { handleLoadNextPaginationPage } from './js/unsplash-api';
 const btnPagination = document.querySelector('.tui-pagination');
 
 btnPagination.addEventListener('click', handleLoadNextPaginationPage);
-// firebase();
-// checkAuthState();
+firebase();
+checkAuthState();
 
 const searchFormElement = document.querySelector('.js_header_search_form');
 searchFormElement.addEventListener('submit', handleLoadNextPaginationPage);
