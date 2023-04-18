@@ -22,7 +22,7 @@ export async function renderTrending(paginationPage = 1) {
     await changeGenresLength(data);
     await makeReleaseYear(data);
     galleryListEl.innerHTML = createFilmsCard(data.results);
-    console.log(data.results);
+    // console.log(data.results);
   } catch (err) {
     console.log(err);
   }
