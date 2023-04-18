@@ -1,6 +1,6 @@
 // находим нужные теги
 export default function refsEl() {
   return {
-    btnTestEl: document.querySelector('.btn_library'),
+    btnTestEl: document.querySelector('[data-login="sign-in"]'),
   };
 }

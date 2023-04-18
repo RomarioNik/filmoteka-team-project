@@ -30,13 +30,28 @@
 }
 
 .btn {
-  // padding: 14px 32px;
   border: none;
   border-radius: 100px;
+  font-weight: 500;
+  font-size: 12px;
   line-height: 1.16;
   text-transform: uppercase;
+  background-color: var(--btn-bg-main-color);
 }
 
+// .isHidden__button {
+//   display: none;
+// }
+
 .is-hidden {
-  display: none;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }

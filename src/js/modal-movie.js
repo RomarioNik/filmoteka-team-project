@@ -1,67 +1,161 @@
 import * as BasicLightBox from 'basiclightbox';
 import { ThemoviedbAPI } from './themoviedb-api';
-const liEl = document.querySelector('.film__card');
+import { setIdLocaleStorageQueue } from './localeStorageQueue';
+import { setIdLocaleStorageWatch } from './localeStorageWatch';
+import { searchingInfoButtonQueue } from './proverkaSettingsQueue';
+import { searchingInfoButtonWatch } from './proverkaSettingsWatch';
+import { updateButtonOnModal } from './firebase/updateButtonOnModal.js';
+import { handleClickMovieButton } from './handleModalFilmButton/handleModalFilmButton';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from './firebase/auth/getAuth';
 
-export const hendlerClickCard = evt => {
+const ulEll = document.querySelector('.film__gallery');
+export const hendlerClickCard = event => {
   // проверяю, клик по карточке или нет.
-  if (evt.currentTarget.nodeName != 'LI') {
-    return;
+  if (event.target.nodeName !== 'UL') {
+    let idLi = event.target.dataset.id;
+    modalIsOpen(idLi);
   }
-  modalIsOpen();
-  // открывает модальное окно!
 };
-// создает разметку модалки и вызывается в экземпляре BasicLightBox
+
 function createModalWindow(data) {
   return `
-<svg class="modal-movie__btn-close" width="10" height="10">
-  <use href="./images/icons.svg#icon-close"></use>
-</svg>
+<button class="modal-movie__btn-close" data-close type='button' > 
+<svg 
+        width="30"
+        height="30"
+        viewBox="0 0 30 30"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M8 8L22 22" stroke="black" stroke-width="2"></path>
+        <path d="M8 22L22 8" stroke="black" stroke-width="2"></path>
+      </svg>
+</button>  
 
   <img src="https://image.tmdb.org/t/p/w400${
     data.poster_path
-  }" class="modal-movie__img" alt="${data.original_title}" />
-  <h2 class="modal-movie__title">${data.original_title}</h2>
-  <div class="modal-movie__wrap">
-    <div class="modal-movie__wrap-key">
-    <p>Vote/Votes</p>
-    <p>popularity</p>
-    <p>original_title</p>
-    <p>genres</p>
-     </div>
-     <div class="modal-movie__wrap-value">
-    <p><span>${data.vote_average.toFixed(1)}</span> / ${data.vote_count}</p>
-    <p>${data.popularity.toFixed(1)}</p>
-    <p>${data.original_title}</p>
-    <p></p>
-   </div>
-  </div>
-  <h3 class="modal-movie__about">About</h3>
-  <p class="modal-movie__desc">${data.overview}</p>
- <div class="modal-movie__btn-wrap">
-  <button type="button" class="modal-movie__Watch">add to Watched</button>
-  <button type="button" class="modal-movie__queue">add to queue</button>
-  </div>
-  
-  `;
+  }" class="modal-movie__img" alt="${data.original_title}" /> 
+ <div class="movie-modal__content">
+    <h2 class="modal-movie__title">${data.original_title}</h2> 
+  <ul class=modal-movie__list>
+  <li class="movie-modal__list-item"><p>Vote/Votes</p><span><span class="active">${data.vote_average.toFixed(
+    1
+  )}</span>  <span>/ ${data.vote_count}</span></span></li>
+  <li class="movie-modal__list-item"><p>popularity </p><span>${data.popularity.toFixed(
+    1
+  )}</span> </li>
+  <li class="movie-modal__list-item"><p>Title</p> <span>${
+    data.original_title
+  }</span></li>
+<li class="movie-modal__list-item"><p>genres</p> </li>
+</ul>
+
+  <h3 class="modal-movie__about">About</h3> 
+  <p class="modal-movie__desc">${data.overview}</p> 
+ <div class="modal-movie__btn-wrap"> 
+  <button type="button" class="modal-movie__Watch" data-id=${
+    data.id
+  } data-btnname="watched">add to Watched</button> 
+  <button type="button" class="modal-movie__queue" data-id=${
+    data.id
+  } data-btnname="queue">add to queue</button> 
+  </div>`;
 }
 
-function getDateFromId(id) {
+async function getDateFromId(id) {
   const api = new ThemoviedbAPI();
   const modalEl = document.querySelector('.modal-movie');
   api.movie_id = id;
-  api
-    .getMovieDetails()
-    .then(({ data }) => {
-      console.log(modalEl);
-      modalEl.insertAdjacentHTML('afterbegin', createModalWindow(data));
-    })
-    .catch(err => console.warn(err));
+
+  try {
+    const { data } = await api.getMovieDetails();
+    modalEl.insertAdjacentHTML('afterbegin', createModalWindow(data));
+  } catch {
+    err => console.warn(err);
+  }
 }
 
-function modalIsOpen() {
-  const instance = BasicLightBox.create('<div class="modal-movie"></div>');
+async function modalIsOpen(ids) {
+  const instance = BasicLightBox.create('<div class="modal-movie"></div>', {
+    onShow: instance => {
+      document.body.classList.add('modal-open');
+    },
+    onClose: instance => {
+      window.removeEventListener('keydown', modalClose);
+      document.body.classList.remove('modal-open');
+    },
+  });
   instance.show();
+  await getDateFromId(ids);
+  if (instance.visible()) {
+    const closeBtn = document.querySelector('[data-close]');
+    closeBtn.addEventListener('click', () => {
+      instance.close();
+    });
+    window.addEventListener('keydown', modalClose);
+    function modalClose(evt) {
+      if (evt.code === 'Escape') {
+        instance.close();
+      }
+    }
 
-  getDateFromId(920);
+    // проверяем вошел ли пользователь
+    // и если не вошел, то сохраняем в localstorage
+    onAuthStateChanged(auth, user => {
+      if (user === null) {
+        function proverkaLoadingLocaleQ(btnka) {
+          if (searchingInfoButtonQueue(btnka)) {
+            btnka.textContent = 'remove to queue';
+            return;
+          }
+          btnka.textContent = 'add to queue';
+        }
+
+        function proverkaLoadingLocaleW(btnka) {
+          if (searchingInfoButtonWatch(btnka)) {
+            btnka.textContent = 'remove to Watched';
+            return;
+          }
+          btnka.textContent = 'add to Watched';
+        }
+
+        const buttonQueueLocale = document.querySelector('.modal-movie__queue');
+        const buttonnWatchedLocale = document.querySelector(
+          '.modal-movie__Watch'
+        );
+
+        proverkaLoadingLocaleQ(buttonQueueLocale);
+        proverkaLoadingLocaleW(buttonnWatchedLocale);
+        buttonQueueLocale.addEventListener('click', event => {
+          setIdLocaleStorageQueue(event);
+          if (searchingInfoButtonQueue(buttonQueueLocale)) {
+            event.currentTarget.textContent = 'remove to queue';
+            return;
+          }
+          event.currentTarget.textContent = 'add to queue';
+        });
+
+        buttonnWatchedLocale.addEventListener('click', event => {
+          setIdLocaleStorageWatch(event);
+          if (searchingInfoButtonWatch(buttonnWatchedLocale)) {
+            event.currentTarget.textContent = 'remove to Watched';
+            return;
+          }
+          event.currentTarget.textContent = 'add to Watched';
+        });
+      } else {
+        // если пользователь вошел,
+        // то сораняем на сервер
+        updateButtonOnModal(ids);
+        document
+          .querySelector('.modal-movie__Watch')
+          .addEventListener('click', handleClickMovieButton);
+        document
+          .querySelector('.modal-movie__queue')
+          .addEventListener('click', handleClickMovieButton);
+      }
+    });
+  }
 }
-// liEl.addEventListener('click', hendlerClickCard);
+
+ulEll.addEventListener('click', hendlerClickCard);

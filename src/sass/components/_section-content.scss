@@ -4,30 +4,47 @@
 // }
 
 .film__gallery {
+  
   @media screen and (min-width: 768px) {
     display: flex;
         flex-wrap: wrap;
-    gap: 20px;  
+    gap: 20px;
     }
-    @media screen and (min-width: 1200px){
-      min-width: 1200px;
+    @media screen and (min-width: 1280px){
+      min-width: 1280px;
       gap: 15px
     }
-  }
+  }  
 
-.film__card{
+.film__card {
   list-style-type: none;
   margin: 0;
   width: 280px;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
   1px 4px 6px rgba(0, 0, 0, 0.16);
   border-radius: 5px;
+  margin-bottom: 15px;
+
     @media screen and (min-width: 768px) {
-    width: 336px;
+    width: 342px;
+    margin-bottom: 0;
     }
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 1280px) {
       width: 395px;
       }
+    }
+
+.film__card {
+&:focus {
+      background: var(--bg-color);
+      transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);      
+      outline: 1px solid var(--second-text-color);
+}
+&:hover {
+      background: var(--bg-color);
+      transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      outline: 1px solid #706f6f;        
+}
 }
 
 .film__img {
@@ -39,7 +56,7 @@
   @media screen and (min-width: 768px) {
     height: 455px;    
     }
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 1280px) {
       height: 574px;      
       }
 }
@@ -54,13 +71,13 @@ text-transform: uppercase;
 padding-left: 10px;
 margin-top: 10px;
 margin-bottom: 8px;
-color: #000000;
+color: var(--text-color);
 @media screen and (min-width: 768px) {
   line-height: 16px;
   margin-top: 8px;
   margin-bottom: 6px;
   }
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1280px) {
     font-size: 20px;
     line-height: 1,2;
     margin-top: 12px;
@@ -72,10 +89,7 @@ color: #000000;
   display: flex;
   padding-left: 10px;
   padding-bottom: 10px;
-  margin-bottom: 10px;
-  @media screen and (min-width: 768px) {
-  margin-bottom: 14;
-  }
+ 
 }
 
 .film__ganre,
@@ -85,11 +99,11 @@ color: #000000;
   font-weight: 500;
   font-size: 12px;
   line-height: 1,1667px;
-  color: #B92F2C;
+  color: var(--second-text-color);
   @media screen and (min-width: 768px) {
     line-height: 16px;
     }
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 1280px) {
       font-size: 20px;
       line-height: 24px;
       }
@@ -98,6 +112,6 @@ color: #000000;
 .film__year {
   margin-left: 5px;
   padding-left: 5px;
-  border-left: 2px solid #B92F2C;
+  border-left: 2px solid var(--second-text-color);
 }
 
