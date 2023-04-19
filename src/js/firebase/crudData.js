@@ -88,13 +88,14 @@ function updateData(id, nameButton, newData, userId) {
     .then(() => {
       console.log('Data updated');
       // обновляем текст кнопки
-      updateButtonOnModal(id);
+
       // обновляем страницу Watched
       // if (nameButton === 'watched') {
-      setTimeout(() => {
-        onWatchedBtnClick();
-        onQueueBtnClick();
-      }, 500);
+      // setTimeout(() => {
+      updateButtonOnModal(id);
+      // onWatchedBtnClick();
+      // onQueueBtnClick();
+      // }, 500);
 
       console.log('onWatchedBtnClick');
       // }
