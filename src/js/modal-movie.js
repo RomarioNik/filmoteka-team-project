@@ -128,7 +128,7 @@ async function modalIsOpen(ids) {
       if (user === null) {
         function proverkaLoadingLocaleQ(btnka) {
           if (searchingInfoButtonQueue(btnka)) {
-            btnka.textContent = 'remove to queue';
+            btnka.textContent = 'remove from queue';
             return;
           }
           btnka.textContent = 'add to queue';
@@ -136,7 +136,7 @@ async function modalIsOpen(ids) {
 
         function proverkaLoadingLocaleW(btnka) {
           if (searchingInfoButtonWatch(btnka)) {
-            btnka.textContent = 'remove to Watched';
+            btnka.textContent = 'remove from Watched';
             return;
           }
           btnka.textContent = 'add to Watched';
@@ -152,7 +152,7 @@ async function modalIsOpen(ids) {
         buttonQueueLocale.addEventListener('click', event => {
           setIdLocaleStorageQueue(event);
           if (searchingInfoButtonQueue(buttonQueueLocale)) {
-            event.currentTarget.textContent = 'remove to queue';
+            event.currentTarget.textContent = 'remove from queue';
             return;
           }
           event.currentTarget.textContent = 'add to queue';
@@ -161,7 +161,7 @@ async function modalIsOpen(ids) {
         buttonnWatchedLocale.addEventListener('click', event => {
           setIdLocaleStorageWatch(event);
           if (searchingInfoButtonWatch(buttonnWatchedLocale)) {
-            event.currentTarget.textContent = 'remove to Watched';
+            event.currentTarget.textContent = 'remove from Watched';
             return;
           }
           event.currentTarget.textContent = 'add to Watched';
