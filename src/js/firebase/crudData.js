@@ -3,6 +3,8 @@ import { getDatabase, ref, get, update, child } from 'firebase/database';
 import { onAuthStateChanged } from 'firebase/auth';
 import { handleClickTestBtn } from './handle/handleClickTestBtn.js';
 import { updateButtonOnModal } from './updateButtonOnModal';
+import { onWatchedBtnClick } from '../render-library-by-id';
+import { onQueueBtnClick } from '../render-library-by-id';
 
 // object is on the server
 // {
@@ -21,7 +23,7 @@ export function writeUserData(id, nameButton) {
       handleClickTestBtn();
       return;
     }
-    console.log('writeUserData');
+    // console.log('writeUserData');
     const dbRef = ref(db);
     // получаем объект пользователя
     get(child(dbRef, `users/${user.uid}`))
@@ -35,44 +37,43 @@ export function writeUserData(id, nameButton) {
             const movies = {
               [nameButton]: [id],
             };
-            updateData(movies);
+            updateData(id, nameButton, movies, user.uid);
             return;
           }
 
           // если в объекте нет нужного свойства
-          if (!nameButton in data) {
+          const bool = nameButton in data;
+          if (!bool) {
             const arr = [id];
             data[nameButton] = arr;
-            updateData(data);
+            updateData(id, nameButton, data, user.uid);
             return;
           }
 
           // проверяем, если ли id в массиве
           const isNumber = data[nameButton].findIndex(el => el === id);
+          console.log(isNumber);
           if (isNumber !== -1) {
             data[nameButton].splice(isNumber, 1);
-            updateData(data);
+            updateData(id, nameButton, data, user.uid);
+            updateButtonOnModal(id);
+            console.log('findIndex');
             return;
           }
 
           // если в объекте есть нужное свойство
           data[nameButton].push(id);
-          updateData(data);
+          updateData(id, nameButton, data, user.uid);
 
-          // перезаписываем объект на сервере
-          function updateData(newData) {
-            update(ref(db, `users/${user.uid}`), newData)
-              .then(() => {
-                console.log('Data updated');
-                updateButtonOnModal(id);
-              })
-              .catch(error => {
-                console.error(error);
-              });
-          }
           // do something
         } else {
-          console.log('No data available');
+          const movies = {
+            watched: [],
+            queue: [],
+          };
+          movies[nameButton] = [id];
+          updateData(id, nameButton, movies, user.uid);
+          // console.log('No data available');
         }
       })
       .catch(error => {
@@ -81,6 +82,28 @@ export function writeUserData(id, nameButton) {
   });
 }
 
+// перезаписываем объект на сервере
+function updateData(id, nameButton, newData, userId) {
+  update(ref(db, `users/${userId}`), newData)
+    .then(() => {
+      console.log('Data updated');
+      // обновляем текст кнопки
+      updateButtonOnModal(id);
+      // обновляем страницу Watched
+      // if (nameButton === 'watched') {
+      setTimeout(() => {
+        onWatchedBtnClick();
+        onQueueBtnClick();
+      }, 500);
+
+      console.log('onWatchedBtnClick');
+      // }
+      // обновляем страницу Queue
+    })
+    .catch(error => {
+      console.error(error);
+    });
+}
 // writeUserData(594768, 'watched');
 
 export function readUserData() {
@@ -155,7 +178,7 @@ export function removeUserData(id, nameButton) {
 
 export function getUserData(callback) {
   // проверяем вошел ли пользователь
-  onAuthStateChanged(auth, user => {
+  onAuthStateChanged(auth, async user => {
     if (user === null) {
       // handleClickTestBtn();
       // alert('Please sign IN readUserData :-)');
@@ -164,7 +187,7 @@ export function getUserData(callback) {
 
     const dbRef = ref(db);
     // получаем объект пользователя
-    get(child(dbRef, `users/${user.uid}`))
+    await get(child(dbRef, `users/${user.uid}`))
       .then(snapshot => {
         if (snapshot.exists()) {
           //   console.log(snapshot.val());

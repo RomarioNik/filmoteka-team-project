@@ -50,7 +50,12 @@ export function onLibPaginationPageClick() {
 }
 
 export function renderCardsById(idArray) {
-  console.log(idArray);
+  // console.log(idArray);
+  if (!idArray) {
+    // console.log(idArray);
+    return;
+  }
+  // console.log('54331', idArray);
   createPaginationForLibrary(idArray);
   renderCardsByIdWithPagination(
     idArray.slice(0, libPaginationOptions.itemsPerPage)
@@ -60,6 +65,7 @@ export function renderCardsById(idArray) {
 export async function renderCardsByIdWithPagination(idArray) {
   const themoviedbAPI = new ThemoviedbAPI();
 
+  // console.log(idArray);
   const arrayOfPromises = idArray.map(async id => {
     themoviedbAPI.movie_id = id;
     try {
@@ -70,7 +76,7 @@ export async function renderCardsByIdWithPagination(idArray) {
     }
   });
   const cards = await Promise.all(arrayOfPromises); // параллельній запрос!
-  console.log(cards);
+  // console.log(cards);
   await filmNaneLengthById(cards);
   await filmPosterLinkById(cards);
   await changeGenresLengthById(cards);
@@ -94,6 +100,7 @@ export function onWatchedBtnClick() {
       getUserData(getArrayOfIdMovies);
 
       function getArrayOfIdMovies(data) {
+        // console.log(data.watched);
         renderCardsById(data.watched);
       }
     }
