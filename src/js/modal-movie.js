@@ -97,7 +97,7 @@ async function modalIsOpen(ids) {
   } catch {
     err => console.warn(err);
   }
-  //
+
   const instance = BasicLightBox.create(dataToModal, {
     onShow: instance => {
       // document.body.classList.add('modal-open');

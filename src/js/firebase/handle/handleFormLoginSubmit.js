@@ -48,7 +48,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 Notify.init({
   width: '300px',
   position: 'right-top',
-  timeout: 4000,
+  timeout: 3000,
   fontSize: '16px',
   cssAnimation: true,
   cssAnimationDuration: 400,
