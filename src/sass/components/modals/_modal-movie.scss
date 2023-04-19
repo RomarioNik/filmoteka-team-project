@@ -16,13 +16,17 @@
   @media screen and (min-width: 768px) {
     display: flex;
     width: 704px;
-    height: 552px;
-    padding: 40px 72px 64px 36px;
+    height: auto;
+    // height: 552px;
+    // padding: 40px 72px 64px 36px;
+    padding: 40px 36px;
   }
   @media screen and (min-width: 1280px) {
     width: 806px;
-    height: 558px;
-    padding: 40px 12px;
+    height: auto;
+    // height: 558px;
+    // padding: 40px 12px;
+    padding: 40px 72px 64px 36px;
   }
 }
 
@@ -30,16 +34,20 @@
   width: 0;
   height: 0;
 }
+
 .movie-modal__content {
   @media screen and (min-width: 768px) {
-    margin-left: 68px;
+    margin-left: 30px;
   }
   @media screen and (min-width: 1280px) {
-    margin-left: 16px;
+    margin-left: 64px;
   }
 }
 .modal-movie__img {
   display: block;
+  max-width: 375px;
+  height: auto;
+  object-fit: contain;
 
   margin-bottom: 20px;
   @media screen and (min-width: 768px) {
@@ -84,8 +92,9 @@
 .modal-movie__Watch {
   display: block;
   width: 100%;
+  height: 60px;
   max-width: 165px;
-  padding: 10px 0;
+  padding: 10px 7px;
   margin-right: 4px;
   text-transform: uppercase;
   // background-color: transparent;
@@ -100,19 +109,21 @@
   &:hover,
   &:focus {
     background-color: var(--second-text-color);
+    border-color: var(--second-text-color);
     box-shadow: 0px 0px 7px rgba(27, 27, 27, 0.15);
 
-    color: var(--btn-text-color);
+    color: var(--text-main-color);
   }
   @media screen and (min-width: 1280px) {
-    padding: 14px 0;
+    padding: 14px 7px;
   }
 }
 .modal-movie__queue {
   display: block;
   width: 100%;
+  height: 60px;
   max-width: 134px;
-  padding: 10px 0;
+  padding: 10px 10px;
   text-transform: uppercase;
   // background-color: transparent;
   border: 1px solid #000000;
@@ -126,12 +137,13 @@
   &:hover,
   &:focus {
     background-color: var(--second-text-color);
+    border-color: var(--second-text-color);
     box-shadow: 0px 0px 7px rgba(27, 27, 27, 0.15);
 
-    color: var(--btn-text-color);
+    color: var(--text-main-color);
   }
   @media screen and (min-width: 1280px) {
-    padding: 14px 0;
+    padding: 14px 10px;
   }
 }
 .modal-movie__btn-wrap {

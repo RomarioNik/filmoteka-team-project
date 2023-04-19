@@ -1,4 +1,5 @@
 import * as BasicLightBox from 'basiclightbox';
+const bodyScrollLock = require('body-scroll-lock');
 import { ThemoviedbAPI } from './themoviedb-api';
 import { setIdLocaleStorageQueue } from './localeStorageQueue';
 import { setIdLocaleStorageWatch } from './localeStorageWatch';
@@ -8,18 +9,29 @@ import { updateButtonOnModal } from './firebase/updateButtonOnModal.js';
 import { handleClickMovieButton } from './handleModalFilmButton/handleModalFilmButton';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase/auth/getAuth';
+import baseImage from '../images/base_image.jpg';
+
+// lock body
+const disableBodyScroll = bodyScrollLock.disableBodyScroll;
+const enableBodyScroll = bodyScrollLock.enableBodyScroll;
+const targetElement = document.querySelector('body'); //.pageWrap
 
 const ulEll = document.querySelector('.film__gallery');
 export const hendlerClickCard = event => {
   // проверяю, клик по карточке или нет.
   if (event.target.nodeName !== 'UL') {
     let idLi = event.target.dataset.id;
+    disableBodyScroll(targetElement);
     modalIsOpen(idLi);
   }
 };
 
 function createModalWindow(data) {
+  const imgFromServer = data.poster_path;
+  const basePath = 'https://image.tmdb.org/t/p/w400';
+  const path = imgFromServer !== null ? basePath + imgFromServer : baseImage;
   return `
+  <div class="modal-movie">
 <button class="modal-movie__btn-close" data-close type='button' > 
 <svg 
         width="30"
@@ -32,9 +44,7 @@ function createModalWindow(data) {
       </svg>
 </button>  
 
-  <img src="https://image.tmdb.org/t/p/w400${
-    data.poster_path
-  }" class="modal-movie__img" alt="${data.original_title}" /> 
+  <img src="${path}" class="modal-movie__img" alt="${data.original_title}" />
  <div class="movie-modal__content">
     <h2 class="modal-movie__title">${data.original_title}</h2> 
   <ul class=modal-movie__list>
@@ -61,34 +71,45 @@ function createModalWindow(data) {
   <button type="button" class="modal-movie__queue" data-id=${
     data.id
   } data-btnname="queue">add to queue</button> 
-  </div>`;
+  </div></div>`;
 }
 
-async function getDateFromId(id) {
-  const api = new ThemoviedbAPI();
-  const modalEl = document.querySelector('.modal-movie');
-  api.movie_id = id;
+// async function getDateFromId(id) {
+//   const api = new ThemoviedbAPI();
+//   const modalEl = document.querySelector('.modal-movie');
+//   api.movie_id = id;
 
+//   try {
+//     const { data } = await api.getMovieDetails();
+//     modalEl.insertAdjacentHTML('afterbegin', createModalWindow(data));
+//   } catch {
+//     err => console.warn(err);
+//   }
+// }
+
+async function modalIsOpen(ids) {
+  let dataToModal = '';
+  const api = new ThemoviedbAPI();
+  api.movie_id = ids;
   try {
     const { data } = await api.getMovieDetails();
-    modalEl.insertAdjacentHTML('afterbegin', createModalWindow(data));
+    dataToModal = createModalWindow(data);
   } catch {
     err => console.warn(err);
   }
-}
-
-async function modalIsOpen(ids) {
-  const instance = BasicLightBox.create('<div class="modal-movie"></div>', {
+  //
+  const instance = BasicLightBox.create(dataToModal, {
     onShow: instance => {
-      document.body.classList.add('modal-open');
+      // document.body.classList.add('modal-open');
     },
     onClose: instance => {
       window.removeEventListener('keydown', modalClose);
-      document.body.classList.remove('modal-open');
+      // document.body.classList.remove('modal-open');
+      enableBodyScroll(targetElement);
     },
   });
   instance.show();
-  await getDateFromId(ids);
+  // await getDateFromId(ids);
   if (instance.visible()) {
     const closeBtn = document.querySelector('[data-close]');
     closeBtn.addEventListener('click', () => {
