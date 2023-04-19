@@ -1,5 +1,4 @@
 .header {
-  background: #f0f0f0;
   margin-left: auto;
   margin-right: auto;
 }
@@ -30,6 +29,9 @@
         rgba(0, 0, 0, 0.4) 65.37%
       ),
       url(../images/bg/background-320@2x.webp);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
   }
 
   @media (min-device-pixel-ratio: 3),
@@ -41,6 +43,9 @@
         rgba(0, 0, 0, 0.4) 65.37%
       ),
       url(../images/bg/background-320@3x.webp);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
   }
 
   @media screen and (min-width: 768px) {
@@ -511,7 +516,15 @@
 //   border: 1px solid var(--bg-color);
 //   background-color: var(--btn-theme-color);
 // }
+[dark] {
+  --text-color: #f0f0f0;
+  --second-text-color: #b92f2c;
 
+  --bg-color: #333;
+
+  --btn-bg-main-color: #333;
+  --btn-bg-second-color: #b92f2c;
+}
 .icon_theme_switcher {
   display: flex;
   justify-content: center;
