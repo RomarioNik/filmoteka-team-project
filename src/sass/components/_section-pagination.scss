@@ -25,31 +25,41 @@
   font-weight: 500;
   font-size: 12px;
   line-height: calc(16 / 12);
-  color: #000000;
+  color: var(--text-color);
+  &:hover {
+    color: var(--text-main-color);
+    background-color: var(--btn-pagin-color);
+  };
+  &:focus {
+    color: var(--text-main-color);
+    background-color: var(--btn-bg-second-color);
+  };
   &.tui-prev,
   &.tui-next {
     margin-right: 0;
     margin-left: 0;
-    background-color: #f7f7f7;
-    &:hover {
-      color: white;
-      background-color: #B92F2C;
-    }
-    
+    background-color: var(--btn-pagin-color);
+    &:hover, focus {
+      color: var(--text-main-color);
+      background-color: var(--btn-bg-second-color);
+    };
   }
   & .tui-ico-ellip {
     margin: 0;
+    background-color: var(--text-main-color);
   }
   &.tui-is-selected {
-    background: #B92F2C;
-    color: #ffffff;
+    background: var(--btn-bg-second-color);
+    color: var(--text-main-color);
   }
   &.tui-first,
   &.tui-last {
     display: none;
-    &:hover {
-      color: white;
-      background-color: #B92F2C;}
+    background-color: var(--btn-pagin-color);
+    &:hover,
+    &:focus {
+      color: var(--text-main-color);
+      background-color: var(--btn-bg-second-color)};
     @media screen and (min-width: 768px) {
       display: flex;
       }
@@ -58,8 +68,15 @@
   &.tui-prev-is-ellip,
   &.tui-next-is-ellip {
     display: none;
+    color: var(--text-main-color);
     @media screen and (min-width: 768px) {
       display: flex;
+      &:hover,
+      &:focus {
+        color: var(--text-main-color);
+     
+      }
+
     }
   }
   @media screen and (min-width: 400px) {
