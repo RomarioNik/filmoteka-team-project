@@ -7,6 +7,17 @@ export function updateButtonOnModal(idButton) {
     const btnWatched = document.querySelector('[data-btnname="watched"]');
     const btnQueue = document.querySelector('[data-btnname="queue"]');
 
+    const watchedBool = 'watched' in data;
+
+    if (!watchedBool) {
+      btnWatched.innerText = 'Add to watched';
+    }
+
+    const queueBool = 'queue' in data;
+    if (!queueBool) {
+      btnQueue.innerText = 'Add to watched';
+    }
+
     if (data.watched && data.watched.includes(idButton)) {
       btnWatched.innerText = 'Remove from watched';
     }

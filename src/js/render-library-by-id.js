@@ -38,24 +38,18 @@ export function createPaginationForLibrary(array) {
 }
 
 export function onLibPaginationPageClick() {
-  console.log('click');
   libraryPagination.on('afterMove', event => {
     const currentPage = event.page;
     let beginCard = libPaginationOptions.itemsPerPage * (currentPage - 1);
     let endCard = libPaginationOptions.itemsPerPage * currentPage;
     renderCardsByIdWithPagination(libraryArray.slice(beginCard, endCard));
-
-    console.log(currentPage);
   });
 }
 
 export function renderCardsById(idArray) {
-  // console.log(idArray);
   if (!idArray) {
-    // console.log(idArray);
     return;
   }
-  // console.log('54331', idArray);
   createPaginationForLibrary(idArray);
   renderCardsByIdWithPagination(
     idArray.slice(0, libPaginationOptions.itemsPerPage)
@@ -65,7 +59,6 @@ export function renderCardsById(idArray) {
 export async function renderCardsByIdWithPagination(idArray) {
   const themoviedbAPI = new ThemoviedbAPI();
 
-  // console.log(idArray);
   const arrayOfPromises = idArray.map(async id => {
     themoviedbAPI.movie_id = id;
     try {
