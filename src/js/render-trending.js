@@ -11,6 +11,10 @@ import createFilmsCard from '../templates/gallery-card.hbs';
 const galleryListEl = document.querySelector('.film__gallery');
 
 const errorSearchMessage = document.querySelector('.js_error_search');
+const mainPaginationElements = document.querySelector('.js_main_pagination');
+const libraryPaginationElements = document.querySelector(
+  '.js_library_pagination'
+);
 
 export async function renderTrending(paginationPage = 1) {
   errorSearchMessage.classList.add('is-hidden');
@@ -22,10 +26,12 @@ export async function renderTrending(paginationPage = 1) {
     await filmPosterLink(data);
     await changeGenresLength(data);
     await makeReleaseYear(data);
-  
+
     galleryListEl.innerHTML = createFilmsCard(data.results);
-    console.log(data.results)
+    mainPaginationElements.classList.remove('is-hidden');
+    libraryPaginationElements.classList.add('is-hidden');
+    // console.log(data.results);
   } catch (err) {
-   console.log(err);
+    console.log(err);
   }
 }

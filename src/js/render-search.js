@@ -11,6 +11,11 @@ import createFilmsCard from '../templates/gallery-card.hbs';
 const galleryListEl = document.querySelector('.film__gallery');
 const errorSearchMessage = document.querySelector('.js_error_search');
 
+const mainPaginationElements = document.querySelector('.js_main_pagination');
+const libraryPaginationElements = document.querySelector(
+  '.js_library_pagination'
+);
+
 const inputSearch = document.querySelector('.search_input');
 export async function renderSearch(event, paginationPage = 1) {
   const themoviedbAPI = new ThemoviedbAPI();
@@ -43,8 +48,10 @@ export async function renderSearch(event, paginationPage = 1) {
     await changeGenresLength(data);
     await makeReleaseYear(data);
     galleryListEl.innerHTML = createFilmsCard(data.results);
+    mainPaginationElements.classList.remove('is-hidden');
+    libraryPaginationElements.classList.add('is-hidden');
     return data;
   } catch (err) {
     console.log(err);
-  } 
+  }
 }

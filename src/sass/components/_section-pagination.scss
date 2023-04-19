@@ -1,4 +1,5 @@
-#pagination {
+#pagination,
+#search-pagination {
   display: none;
   display: flex;
   align-items: center;
@@ -9,7 +10,8 @@
   }
 }
 
-#pagination .tui-page-btn {
+#pagination .tui-page-btn,
+#search-pagination .tui-page-btn {
   padding: 0;
   width: 40px;
   height: 40px;

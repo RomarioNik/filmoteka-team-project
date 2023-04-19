@@ -1,3 +1,6 @@
+import Pagination from 'tui-pagination';
+import 'tui-pagination/dist/tui-pagination.css';
+
 import { ThemoviedbAPI } from './themoviedb-api';
 import { changeGenresLengthById } from './change-genres-length';
 import { makeReleaseYearById } from './release-year';
@@ -12,7 +15,49 @@ import { renderLocaleWatch } from './renderStorageWatched';
 
 const galleryListEl = document.querySelector('.film__gallery');
 
-export async function renderCardsById(idArray) {
+const mainPaginationElements = document.querySelector('.js_main_pagination');
+const libraryPaginationElements = document.querySelector(
+  '.js_library_pagination'
+);
+
+let libraryPagination;
+let libraryArray;
+let libPaginationOptions;
+
+export function createPaginationForLibrary(array) {
+  libPaginationOptions = {
+    totalItems: array.length,
+    itemsPerPage: 20,
+    visiblePages: 5,
+    page: 1,
+  };
+  libraryPagination = new Pagination('search-pagination', libPaginationOptions);
+  libraryArray = array;
+  mainPaginationElements.classList.add('is-hidden');
+  libraryPaginationElements.classList.remove('is-hidden');
+}
+
+export function onLibPaginationPageClick() {
+  console.log('click');
+  libraryPagination.on('afterMove', event => {
+    const currentPage = event.page;
+    let beginCard = libPaginationOptions.itemsPerPage * (currentPage - 1);
+    let endCard = libPaginationOptions.itemsPerPage * currentPage;
+    renderCardsByIdWithPagination(libraryArray.slice(beginCard, endCard));
+
+    console.log(currentPage);
+  });
+}
+
+export function renderCardsById(idArray) {
+  console.log(idArray);
+  createPaginationForLibrary(idArray);
+  renderCardsByIdWithPagination(
+    idArray.slice(0, libPaginationOptions.itemsPerPage)
+  );
+}
+
+export async function renderCardsByIdWithPagination(idArray) {
   const themoviedbAPI = new ThemoviedbAPI();
 
   const arrayOfPromises = idArray.map(async id => {
