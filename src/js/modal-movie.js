@@ -128,7 +128,7 @@ async function modalIsOpen(ids) {
       if (user === null) {
         function proverkaLoadingLocaleQ(btnka) {
           if (searchingInfoButtonQueue(btnka)) {
-            btnka.textContent = 'remove to queue';
+            btnka.textContent = 'remove from queue';
             return;
           }
           btnka.textContent = 'add to queue';
@@ -136,7 +136,7 @@ async function modalIsOpen(ids) {
 
         function proverkaLoadingLocaleW(btnka) {
           if (searchingInfoButtonWatch(btnka)) {
-            btnka.textContent = 'remove to Watched';
+            btnka.textContent = 'remove from Watched';
             return;
           }
           btnka.textContent = 'add to Watched';
