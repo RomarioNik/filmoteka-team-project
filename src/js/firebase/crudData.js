@@ -56,8 +56,6 @@ export function writeUserData(id, nameButton) {
           if (isNumber !== -1) {
             data[nameButton].splice(isNumber, 1);
             updateData(id, nameButton, data, user.uid);
-            updateButtonOnModal(id);
-            console.log('findIndex');
             return;
           }
 
@@ -89,15 +87,11 @@ function updateData(id, nameButton, newData, userId) {
       console.log('Data updated');
       // обновляем текст кнопки
 
-      // обновляем страницу Watched
-      // if (nameButton === 'watched') {
-      // setTimeout(() => {
       updateButtonOnModal(id);
+      // обновляем страницу Watched
       // onWatchedBtnClick();
       // onQueueBtnClick();
-      // }, 500);
 
-      console.log('onWatchedBtnClick');
       // }
       // обновляем страницу Queue
     })

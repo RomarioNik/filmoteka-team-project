@@ -35,6 +35,7 @@ queueHeaderBtn.addEventListener('click', onQueueBtnClick);
 const btnLibPaginationEl = document.querySelector('.tui-library-pagination');
 btnLibPaginationEl.addEventListener('click', onLibPaginationPageClick);
 
+//home
 const homeHeaderBtn = document.querySelector('.btn_home');
 homeHeaderBtn.addEventListener('click', onHomeBtnClick);
 
