@@ -31,7 +31,7 @@ function createModalWindow(data) {
   const basePath = 'https://image.tmdb.org/t/p/w400';
   const path = imgFromServer !== null ? basePath + imgFromServer : baseImage;
   return `
-  <div class="modal-movie">
+   
 <button class="modal-movie__btn-close" data-close type='button' > 
 <svg 
         width="30"

@@ -1,11 +1,11 @@
 .modal-open {
   overflow: hidden;
 }
-.modal-movie {
+.basicLightbox__placeholder {
   position: relative;
-  width: 280px;
-
-  height: 600px;
+  width: calc(100% - 30px);
+  max-width: 420px;
+  height: calc(100% - 50px);
   padding: 48px 20px 20px;
 
   background-color: var(--bg-color);
@@ -15,10 +15,10 @@
 
   @media screen and (min-width: 768px) {
     display: flex;
-    width: 704px;
-    height: auto;
-    // height: 552px;
-    // padding: 40px 72px 64px 36px;
+    width: 100%;
+    max-width: 550px;
+    height: calc(100% - 50px);
+    max-height: 720px;
     padding: 40px 36px;
   }
   @media screen and (min-width: 1280px) {
@@ -29,8 +29,10 @@
     padding: 40px 72px 64px 36px;
   }
 }
+// .modal-movie {
+// }
 
-.modal-movie::-webkit-scrollbar {
+.basicLightbox__placeholder::-webkit-scrollbar {
   width: 0;
   height: 0;
 }
@@ -148,6 +150,7 @@
 }
 .modal-movie__btn-wrap {
   display: flex;
+  justify-content: center;
 }
 
 .modal-movie__btn-close {
