@@ -1,20 +1,25 @@
 {{#each this}}
   <li class='film__card' data-id={{this.id}}>
     <a class='film__link' data-id={{this.id}} href='#'>
+      <div class='film__trailer trailer'>
+        <button class='trailer__btn' data-id={{this.id}}>
+          <div class='trailer__text-wrap' data-id={{this.id}}>
+          </div>
+        </button>
+      </div>
       <div>
-      <img
-        class='film__img'
-        src={{this.poster_path}}
-        alt=''
-        data-id={{this.id}}
-      />
-      <h2 class='film__name' data-id={{this.id}}>{{this.title}}</h2>
-      <div class='film__atribute' data-id={{this.id}}>
-        <p class='film__ganre' data-id={{this.id}}>{{this.genre_ids}}</p>
-        <p class='film__year' data-id={{this.id}}>{{this.release_date}}</p>
+        <img
+          class='film__img'
+          src={{this.poster_path}}
+          alt=''
+          data-id={{this.id}}
+        />
+        <h2 class='film__name' data-id={{this.id}}>{{this.title}}</h2>
+        <div class='film__atribute' data-id={{this.id}}>
+          <p class='film__ganre' data-id={{this.id}}>{{this.genre_ids}}</p>
+          <p class='film__year' data-id={{this.id}}>{{this.release_date}}</p>
+        </div>
       </div>
-      </div>
-       </a>
-    </li>
+    </a>
+  </li>
 {{/each}}
-
