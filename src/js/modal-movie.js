@@ -101,11 +101,11 @@ async function modalIsOpen(ids) {
 
   const instance = BasicLightBox.create(dataToModal, {
     onShow: instance => {
-      // document.body.classList.add('modal-open');
+      document.body.classList.add('modal-open');
     },
     onClose: instance => {
       window.removeEventListener('keydown', modalClose);
-      // document.body.classList.remove('modal-open');
+      document.body.classList.remove('modal-open');
       // enableBodyScroll(targetElement);
     },
   });
