@@ -1,5 +1,5 @@
 import * as BasicLightBox from 'basiclightbox';
-const bodyScrollLock = require('body-scroll-lock');
+// const bodyScrollLock = require('body-scroll-lock');
 import { ThemoviedbAPI } from './themoviedb-api';
 import { setIdLocaleStorageQueue } from './localeStorageQueue';
 import { setIdLocaleStorageWatch } from './localeStorageWatch';
@@ -12,16 +12,17 @@ import { auth } from './firebase/auth/getAuth';
 import baseImage from '../images/base_image.jpg';
 
 // lock body
-const disableBodyScroll = bodyScrollLock.disableBodyScroll;
-const enableBodyScroll = bodyScrollLock.enableBodyScroll;
-const targetElement = document.querySelector('body'); //.pageWrap
+// const disableBodyScroll = bodyScrollLock.disableBodyScroll;
+// const enableBodyScroll = bodyScrollLock.enableBodyScroll;
+// const targetElement = document.querySelector('body'); //.pageWrap
 
 const ulEll = document.querySelector('.film__gallery');
 export const hendlerClickCard = event => {
+  event.preventDefault();
   // проверяю, клик по карточке или нет.
   if (event.target.nodeName !== 'UL') {
     let idLi = event.target.dataset.id;
-    disableBodyScroll(targetElement);
+    // disableBodyScroll(targetElement);
     modalIsOpen(idLi);
   }
 };
@@ -105,7 +106,7 @@ async function modalIsOpen(ids) {
     onClose: instance => {
       window.removeEventListener('keydown', modalClose);
       // document.body.classList.remove('modal-open');
-      enableBodyScroll(targetElement);
+      // enableBodyScroll(targetElement);
     },
   });
   instance.show();
