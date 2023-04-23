@@ -4,47 +4,91 @@
 // }
 
 .film__gallery {
-  
   @media screen and (min-width: 768px) {
     display: flex;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
     gap: 20px;
-    }
-    @media screen and (min-width: 1280px){
-      min-width: 1280px;
-      gap: 15px
-    }
-  }  
+  }
+  @media screen and (min-width: 1280px) {
+    min-width: 1280px;
+    gap: 15px;
+  }
+}
 
 .film__card {
   list-style-type: none;
   margin: 0;
   width: 280px;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
-  1px 4px 6px rgba(0, 0, 0, 0.16);
+    1px 4px 6px rgba(0, 0, 0, 0.16);
   border-radius: 5px;
   margin-bottom: 15px;
 
-    @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     width: 342px;
     margin-bottom: 0;
-    }
-    @media screen and (min-width: 1280px) {
-      width: 395px;
-      }
-    }
+  }
+  @media screen and (min-width: 1280px) {
+    width: 395px;
+  }
+}
 
 .film__card {
-&:focus {
-      background: var(--bg-color);
-      transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);      
-      outline: 1px solid var(--second-text-color);
+  &:focus {
+    background: var(--bg-color);
+    transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    outline: 1px solid var(--second-text-color);
+  }
+  &:hover {
+    background: var(--bg-color);
+    transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    outline: 1px solid #706f6f;
+  }
 }
-&:hover {
-      background: var(--bg-color);
-      transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
-      outline: 1px solid #706f6f;        
+
+.film__link {
+  position: relative;
 }
+
+.trailer {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 5;
+  width: 100px;
+  height: 30px;
+}
+
+.trailer__wrap {
+  position: absolute;
+  top: 7px;
+  left: 18px;
+  z-index: 1;
+  width: 80px;
+  height: 16px;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 0.897);
+}
+
+.trailer__btn {
+  position: relative;
+  z-index: 2;
+  width: 50px;
+  height: 34px;
+  border: none;
+  border-radius: 8px;
+  background-image: url('../images/youtube.svg');
+  background-size: 100%;
+  background-position: center;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  box-shadow: 2px 2px 5px 0px rgba(255, 255, 255, 0.75),
+    -2px -2px 5px 0px rgba(255, 255, 255, 0.75);
+}
+
+.trailer__text {
+  padding-left: 40px;
+  color: rgb(199, 15, 15);
 }
 
 .film__img {
@@ -52,44 +96,43 @@
   height: 402px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  
+
   @media screen and (min-width: 768px) {
-    height: 455px;    
-    }
-    @media screen and (min-width: 1280px) {
-      height: 574px;      
-      }
+    height: 455px;
+  }
+  @media screen and (min-width: 1280px) {
+    height: 574px;
+  }
 }
 
 .film__name {
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 500;
-font-size: 12px;
-line-height: 1,1667;
-text-transform: uppercase;
-padding-left: 10px;
-margin-top: 10px;
-margin-bottom: 8px;
-color: var(--text-color);
-@media screen and (min-width: 768px) {
-  line-height: 16px;
-  margin-top: 8px;
-  margin-bottom: 6px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1, 1667;
+  text-transform: uppercase;
+  padding-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 8px;
+  color: var(--text-color);
+  @media screen and (min-width: 768px) {
+    line-height: 16px;
+    margin-top: 8px;
+    margin-bottom: 6px;
   }
   @media screen and (min-width: 1280px) {
     font-size: 20px;
-    line-height: 1,2;
+    line-height: 1, 2;
     margin-top: 12px;
     margin-bottom: 10px;
-    }
+  }
 }
 
 .film__atribute {
   display: flex;
   padding-left: 10px;
   padding-bottom: 10px;
- 
 }
 
 .film__ganre,
@@ -98,20 +141,19 @@ color: var(--text-color);
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
-  line-height: 1,1667px;
+  line-height: 1, 1667px;
   color: var(--second-text-color);
   @media screen and (min-width: 768px) {
     line-height: 16px;
-    }
-    @media screen and (min-width: 1280px) {
-      font-size: 20px;
-      line-height: 24px;
-      }
   }
+  @media screen and (min-width: 1280px) {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
 
 .film__year {
   margin-left: 5px;
   padding-left: 5px;
   border-left: 2px solid var(--second-text-color);
 }
-
