@@ -18,7 +18,7 @@
     display: flex;
     width: 100%;
     max-width: 720px;
-    height: 100%;
+    height: calc(100% - 30px);
     max-height: 480px;
     padding: 40px 36px;
   }
@@ -26,10 +26,10 @@
     width: 100%;
     max-width: 800px;
     height: 100%;
-    max-height: 600px;
+    max-height: 560px;
     // height: 558px;
-    // padding: 40px 12px;
-    padding: 40px 72px 64px 36px;
+    padding: 40px 12px;
+    // padding: 40px 72px 64px 36px;
   }
 }
 // .modal-movie {
@@ -57,6 +57,11 @@
   margin-bottom: 20px;
   @media screen and (min-width: 768px) {
     margin: 0;
+    height: 375px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin: 0;
+    height: 450px;
   }
 }
 .modal-movie__title {
@@ -93,7 +98,22 @@
   line-height: calc(20 / 12);
 
   margin-bottom: 20px;
+
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  @media screen and (min-width: 768px) {
+    height: 90px;
+  }
+  @media screen and (min-width: 1280px) {
+    height: 150px;
+  }
 }
+.modal-movie__desc::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
 .modal-movie__Watch {
   display: block;
   width: 100%;
