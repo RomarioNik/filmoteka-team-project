@@ -6,7 +6,8 @@
   position: relative;
   width: calc(100% - 30px);
   max-width: 420px;
-  height: calc(100% - 100px);
+  height: calc(100% - 120px);
+
   padding: 48px 20px 20px;
 
   background-color: var(--bg-color);
@@ -98,20 +99,6 @@
   line-height: calc(20 / 12);
 
   margin-bottom: 20px;
-
-  overflow: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  @media screen and (min-width: 768px) {
-    height: 90px;
-  }
-  @media screen and (min-width: 1280px) {
-    height: 150px;
-  }
-}
-.modal-movie__desc::-webkit-scrollbar {
-  width: 0;
-  height: 0;
 }
 
 .modal-movie__Watch {
