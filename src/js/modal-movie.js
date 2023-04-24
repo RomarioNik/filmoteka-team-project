@@ -24,6 +24,7 @@ export const hendlerClickCard = event => {
     let idLi = event.target.dataset.id;
     // disableBodyScroll(targetElement);
     modalIsOpen(idLi);
+    console.log(modalMovie);
   }
 };
 
@@ -32,9 +33,9 @@ function createModalWindow(data) {
   const basePath = 'https://image.tmdb.org/t/p/w400';
   const path = imgFromServer !== null ? basePath + imgFromServer : baseImage;
   return `
-  <div class="modal-movie">
-<button class="modal-movie__btn-close" data-close type='button' > 
-<svg 
+    <div class="modal-movie">
+      <button class="modal-movie__btn-close" data-close type='button' > 
+      <svg 
         width="30"
         height="30"
         viewBox="0 0 30 30"
@@ -46,25 +47,32 @@ function createModalWindow(data) {
 </button>  
 
   <img src="${path}" class="modal-movie__img" alt="${data.original_title}" />
- <div class="movie-modal__content">
-    <h2 class="modal-movie__title">${data.original_title}</h2> 
-  <ul class=modal-movie__list>
-  <li class="movie-modal__list-item"><p>Vote/Votes</p><span><span class="active">${data.vote_average.toFixed(
-    1
-  )}</span>  <span>/ ${data.vote_count}</span></span></li>
-  <li class="movie-modal__list-item"><p>popularity </p><span>${data.popularity.toFixed(
-    1
-  )}</span> </li>
-  <li class="movie-modal__list-item"><p>Title</p> <span>${
-    data.original_title
-  }</span></li>
-<li class="movie-modal__list-item"><p>genres</p><span>${data.genres
-    .map(el => el.name)
-    .join(', ')}</span></li>
-</ul>
 
-  <h3 class="modal-movie__about">About</h3> 
-  <p class="modal-movie__desc">${data.overview}</p> 
+ <div class="movie-modal__content">
+    <div>
+      <h2 class="modal-movie__title">${data.original_title}</h2> 
+    
+      <ul class=modal-movie__list>
+      <li class="movie-modal__list-item"><p>Vote/Votes</p><span><span class="active">${data.vote_average.toFixed(
+        1
+      )}</span>  <span>/ ${data.vote_count}</span></span></li>
+      <li class="movie-modal__list-item"><p>popularity </p><span>${data.popularity.toFixed(
+        1
+      )}</span> </li>
+      <li class="movie-modal__list-item"><p>Title</p> <span>${
+        data.original_title
+      }</span></li>
+      <li class="movie-modal__list-item"><p>genres</p><span>${data.genres
+        .map(el => el.name)
+        .join(', ')}</span></li>
+      </ul>
+   </div>
+    <div>
+      <h3 class="modal-movie__about">About</h3> 
+       <p class="modal-movie__desc">${data.overview}</p> 
+
+   </div>
+
  <div class="modal-movie__btn-wrap"> 
   <button type="button" class="modal-movie__Watch" data-id=${
     data.id
@@ -72,7 +80,8 @@ function createModalWindow(data) {
   <button type="button" class="modal-movie__queue" data-id=${
     data.id
   } data-btnname="queue">add to queue</button> 
-  </div></div>`;
+    </div>
+  </div>`;
 }
 
 // async function getDateFromId(id) {
