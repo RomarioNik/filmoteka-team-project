@@ -19,6 +19,9 @@ const mainPaginationElements = document.querySelector('.js_main_pagination');
 const libraryPaginationElements = document.querySelector(
   '.js_library_pagination'
 );
+const searchPaginationElements = document.querySelector(
+  '.js_search_pagination'
+);
 
 let libraryPagination;
 let libraryArray;
@@ -31,10 +34,14 @@ export function createPaginationForLibrary(array) {
     visiblePages: 5,
     page: 1,
   };
-  libraryPagination = new Pagination('search-pagination', libPaginationOptions);
+  libraryPagination = new Pagination(
+    'library-pagination',
+    libPaginationOptions
+  );
   libraryArray = array;
   mainPaginationElements.classList.add('is-hidden');
   libraryPaginationElements.classList.remove('is-hidden');
+  searchPaginationElements.classList.add('is-hidden');
 }
 
 export function onLibPaginationPageClick() {
