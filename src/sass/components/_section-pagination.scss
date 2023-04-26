@@ -1,5 +1,6 @@
-#pagination,
-#search-pagination {
+#main-pagination,
+#search-pagination,
+#library-pagination {
   display: none;
   display: flex;
   align-items: center;
@@ -10,8 +11,9 @@
   }
 }
 
-#pagination .tui-page-btn,
-#search-pagination .tui-page-btn {
+#main-pagination .tui-page-btn,
+#search-pagination .tui-page-btn,
+#library-pagination .tui-page-btn {
   padding: 0;
   width: 40px;
   height: 40px;
@@ -29,20 +31,21 @@
   &:hover {
     color: var(--text-main-color);
     background-color: var(--btn-pagin-color);
-  };
+  }
   &:focus {
     color: var(--text-main-color);
     background-color: var(--btn-bg-second-color);
-  };
+  }
   &.tui-prev,
   &.tui-next {
     margin-right: 0;
     margin-left: 0;
     background-color: var(--btn-pagin-color);
-    &:hover, focus {
+    &:hover,
+    focus {
       color: var(--text-main-color);
       background-color: var(--btn-bg-second-color);
-    };
+    }
   }
   & .tui-ico-ellip {
     margin: 0;
@@ -59,10 +62,11 @@
     &:hover,
     &:focus {
       color: var(--text-main-color);
-      background-color: var(--btn-bg-second-color)};
+      background-color: var(--btn-bg-second-color);
+    }
     @media screen and (min-width: 768px) {
       display: flex;
-      }
+    }
   }
 
   &.tui-prev-is-ellip,
@@ -74,9 +78,7 @@
       &:hover,
       &:focus {
         color: var(--text-main-color);
-     
       }
-
     }
   }
   @media screen and (min-width: 400px) {
@@ -86,8 +88,6 @@
   @media screen and (min-width: 768px) {
     margin-bottom: 60px;
 
-
-    
     // &.tui-first,
     // &.tui-next {
     //   position: relative;
